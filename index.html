@@ -134,7 +134,7 @@ input:focus,select:focus{border-color:var(--cyan)}
 .seg button.on{background:linear-gradient(100deg,#4bdcf6,#8d73ff);color:#07101c;box-shadow:0 3px 0 #3a4fb8}
 .banner{display:block;width:100%;text-align:left;margin-top:12px;padding:14px 16px;border-radius:18px;background:linear-gradient(120deg,#3b2257,#1d2c52);border:1px solid #6a4aa0;box-shadow:0 5px 0 #120d24}
 .banner b{display:block;font-size:15px}.banner small{color:#cdbfe8;font-weight:500}.banner:active{transform:translateY(4px);box-shadow:0 1px 0 #120d24}
-/* PRIME tiers */
+/* ПРЕМИУМ tiers */
 .t-day{--c1:#52e5ff;--c2:#3b8bff;--c3:#b8f1ff;--grad:linear-gradient(90deg,#52e5ff,#3b8bff);--glow:#3bc8ff55}
 .t-week{--c1:#ffb347;--c2:#ff4f9a;--c3:#ffe1a8;--grad:linear-gradient(90deg,#ffb347,#ff4f9a);--glow:#ff6f7a66}
 .t-month{--c1:#3dffc0;--c2:#18b3ff;--c3:#c4ffee;--grad:linear-gradient(90deg,#3dffc0,#18b3ff);--glow:#2fe6c066}
@@ -172,6 +172,32 @@ input:focus,select:focus{border-color:var(--cyan)}
 .ownedtag{font-size:11px;color:var(--green);font-weight:800}
 .nowrap{white-space:nowrap}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.seg button{font-size:12px;padding:10px 2px}
+#dlgBox h3{margin:0 0 8px}
+/* ===== v9: no sideways movement, battle ===== */
+html,body{overflow-x:hidden;max-width:100%;overscroll-behavior-x:none}
+#app,.page,.hero,.product,.pcard,.daily,.prow,.notice,.banner,.tile,.stat-card,.modalbox{max-width:100%;min-width:0;overflow-wrap:anywhere}
+.product-head,.pcard .ph,.daily{flex-wrap:wrap}
+.pinfo,.pinfo b{min-width:0}
+.seg button{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stat-cards{grid-template-columns:repeat(auto-fit,minmax(72px,1fr))}
+.tab{font-size:9.5px;min-width:0}.tab span{font-size:20px}
+.stakes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}
+.stk{padding:14px 4px;border-radius:14px;background:#1b2943;border:1px solid var(--line);font-size:15px;box-shadow:0 4px 0 #0a1020;transition:transform .08s,box-shadow .08s}
+.stk:active{transform:translateY(3px);box-shadow:0 1px 0 #0a1020}
+.stk.on{background:linear-gradient(100deg,#4bdcf6,#8d73ff);color:#07101c;box-shadow:0 4px 0 #3a4fb8}
+.stk.off{opacity:.45}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin:8px 0 12px}
+.vs .side{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;font-weight:800;font-size:14px}
+.vs .vsx{font-weight:900;font-size:22px;color:var(--amber)}
+.bbig{font-size:64px;font-weight:900;line-height:1.1;min-height:76px;display:grid;place-items:center;color:var(--cyan);text-shadow:0 0 30px #52e5ff88}
+.bbig.go{color:#7bff9a;text-shadow:0 0 30px #55e6a5aa}
+.bscore{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
+.bscore div{background:#0c1425;border:1px solid var(--line);border-radius:14px;padding:8px}
+.bscore b{display:block;font-size:30px}
+.tug{height:14px;border-radius:9px;margin:10px 0;background:linear-gradient(90deg,var(--cyan) var(--p,50%),#ff5f8a var(--p,50%));transition:background .2s}
+.btap{width:min(60vw,230px);height:min(60vw,230px);border-radius:50%;margin:14px auto 6px;display:grid;place-items:center;font-size:44px;font-weight:900;color:#fff;user-select:none;-webkit-user-select:none;touch-action:manipulation;border:5px solid #ffb84d;background:radial-gradient(circle at 35% 28%,#ff9a6b,#c0392b 55%,#5a1230);box-shadow:0 0 0 10px #ff7a5922,0 0 50px #ff7a5977;opacity:.45}
+.btap.on{opacity:1}.btap.on:active{transform:scale(.93)}
 </style>
 </head>
 <body>
@@ -190,9 +216,9 @@ input:focus,select:focus{border-color:var(--cyan)}
 <div class="avatar-wrap"><div class="avatar" id="previewAvatar">👤</div></div>
 <button class="btn secondary full" onclick="pickAvatar('register')">Выбрать фото из галереи</button>
 <p class="hint center">После выбора можно двигать фото и менять масштаб.</p>
-<label>Никнейм (от 4 до 7 символов)</label>
-<input id="nickname" maxlength="7" minlength="4" placeholder="Например: NEXOR4" autocomplete="off">
-<p class="hint">Буквы и цифры без пробелов. Ник должен быть уникальным.</p>
+<label>Никнейм (от 3 до 10 символов)</label>
+<input id="nickname" maxlength="10" minlength="3" placeholder="Например: Nexor_4!" autocomplete="off">
+<p class="hint">Буквы, цифры и любые символы, без пробелов. Нужна хотя бы одна буква. Ник должен быть уникальным.</p>
 <button class="btn full" id="regBtn" onclick="register()">Зарегистрироваться</button>
 <button class="btn secondary full" style="margin-top:9px" onclick="backFromRegister()">← Назад</button></div></section>
 
@@ -218,6 +244,8 @@ input:focus,select:focus{border-color:var(--cyan)}
 <label>Масштаб</label><input id="zoom" type="range" min="1" max="4" step=".05" value="1">
 <div class="row" style="margin-top:9px"><button class="btn secondary" onclick="resetCropPosition()">По центру</button><button class="btn secondary" onclick="cancelCrop()">Отмена</button></div>
 <button class="btn full" style="margin-top:9px" onclick="saveCrop()">Сохранить фото</button></div></div>
+
+<div id="dlgModal" class="modal hidden" style="z-index:100"><div class="modalbox" id="dlgBox"></div></div>
 
 <div id="authModal" class="modal top hidden"><div class="modalbox" id="authBox"></div></div>
 
@@ -250,30 +278,40 @@ const fmt=n=>Number(n||0).toLocaleString('ru-RU');
 const LABELS={coins:'монет',gems:'алмазов'};
 const ICONS={coins:'🪙',gems:'💎'};
 const ACH=[{at:50000,icon:'✦',name:'50K',title:'Первые 50K'},{at:150000,icon:'⚡',name:'150K',title:'Энергия'},{at:500000,icon:'♛',name:'500K',title:'Коллекционер'},{at:1500000,icon:'☄',name:'1.5M',title:'Легенда'},{at:5000000,icon:'✧',name:'5M',title:'Мифический'}];
-const TABS=[['home','🏠','Главная'],['play','🎮','Играть'],['market','🏪','Рынок'],['players','🏆','Игроки'],['me','👤','Профиль']];
+const TABS=[['home','🏠','Главная'],['play','🎮','Играть'],['battle','⚔️','Батл'],['market','🏪','Рынок'],['players','🏆','Игроки'],['me','👤','Профиль']];
 const TIERS={
- day:{rank:1,icon:'⚡',name:'PRIME',perks:['Неоновая рамка вокруг аватара','Подсветка строки в списке игроков','Каждый клик ровно +10 🪙']},
- week:{rank:2,icon:'👑',name:'PRIME ROYAL',perks:['Огненная рамка с короной','Сияющий ник и блик по всей строке','Праздничный профиль','Каждый клик ровно +10 🪙']},
- month:{rank:3,icon:'💠',name:'PRIME ELITE',perks:['Изумрудная рамка со звёздами','Сияющий ник, строка и профиль','Каждый клик ровно +10 🪙']},
- year:{rank:4,icon:'🌌',name:'PRIME LEGEND',perks:['Радужная рамка с мерцающими звёздами','Легендарный профиль и сияющий ник','Самая яркая строка в списке игроков','Каждый клик ровно +10 🪙']}};
-const PRIME_PRICES=[{tier:'day',days:1,price:500,label:'1 день'},{tier:'week',days:7,price:5000,label:'1 неделя'},{tier:'year',days:365,price:500000,label:'1 год'}];
+ day:{rank:1,icon:'⚡',name:'ПРЕМИУМ',perks:['Неоновая рамка вокруг аватара','Подсветка строки в списке игроков','Значок ⚡ рядом с ником']},
+ week:{rank:2,icon:'👑',name:'ПРЕМИУМ ROYAL',perks:['Огненная рамка с короной','Сияющий ник и блик по всей строке','Праздничный профиль']},
+ month:{rank:3,icon:'💠',name:'ПРЕМИУМ ELITE',perks:['Изумрудная рамка со звёздами','Сияющий ник, строка и профиль']},
+ year:{rank:4,icon:'🌌',name:'ПРЕМИУМ LEGEND',perks:['Радужная рамка с мерцающими звёздами','Легендарный профиль и сияющий ник','Самая яркая строка в списке игроков']}};
+const ПРЕМИУМ_PRICES=[{tier:'day',days:1,price:500,label:'1 день'},{tier:'week',days:7,price:5000,label:'1 неделя'},{tier:'year',days:365,price:500000,label:'1 год'}];
 const TIER_BY_DAYS={1:'day',7:'week',30:'month',365:'year'};
 const MINER=[{price:20,rate:300},{price:100,rate:1200},{price:400,rate:4000},{price:1500,rate:14000},{price:5000,rate:50000}];
-const MINER_CAP=8*36e5,MAX_POWER=9;
+const MINER_CAP=8*36e5,NICK_CARD=30000;
 const TITLE_LIST=[{id:'hunter',name:'🏹 Охотник',price:30},{id:'star',name:'⭐ Звезда',price:100},{id:'boss',name:'😎 Босс',price:250},{id:'king',name:'👑 Король кликов',price:800},{id:'myth',name:'🔥 Мифик',price:2000}];
 const COLOR_LIST=[{id:'c_cyan',name:'Неоновый голубой',val:'#52e5ff',price:40},{id:'c_pink',name:'Розовый неон',val:'#ff7ac8',price:40},{id:'c_lime',name:'Лайм',val:'#9dff6b',price:40},{id:'c_sun',name:'Солнечный',val:'#ffc24a',price:80},{id:'c_rb',name:'Радуга',val:'rainbow',price:300}];
 const ITEM={};TITLE_LIST.forEach(x=>ITEM[x.id]={...x,k:'title'});COLOR_LIST.forEach(x=>ITEM[x.id]={...x,k:'color'});
-const NICK_RE=/^[\p{L}\p{N}_]+$/u;
+const NICK_MIN=3,NICK_MAX=10;
+function nickErr(n){
+ const len=[...n].length;
+ if(len<NICK_MIN||len>NICK_MAX)return `Ник: от ${NICK_MIN} до ${NICK_MAX} символов.`;
+ if(/[\s\u0000-\u001f\u007f]/.test(n))return 'В нике не должно быть пробелов.';
+ if(!/\p{L}/u.test(n))return 'В нике нужна хотя бы одна буква. Только из цифр или символов нельзя.';
+ return '';
+}
+const nickKey=low=>/^[\p{L}\p{N}_]+$/u.test(low)&&!/^__.*__$/.test(low)?low:'x~'+encodeURIComponent(low);
 const CODE_RE=/^[A-Z0-9_-]{3,24}$/;
 
 let appM,authM,fsM,app,auth,db;
 let uid=null,me=null,entered=false,page='home',splashDone=false,authReady=false,splashTimer=null;
 let unsubMe=null,unsubInbox=null,inbox=[],inboxFirst=true;
+const BSTAKES={coins:[300,600,1000],gems:[1,5,10,20,30]},BPRE=5,BDUR=60;
+let bt={st:'idle',type:'coins',amt:300,side:0,my:0,oppc:0,res:null};
 let lastPK='',topKey='',achInit=false,achSeen={},goldMig=false,mTab='prime',plLimit=100;
 let pendingAvatar='',avatarMode='register';
 let plList=[],plCache={},plTimer=null,plSearchT=null;
 let curMsg=null;
-const pend={coins:0,gems:0,clicks:0};let flushT=null;
+const pend={coins:0,gems:0,clicks:0,nickCards:0};let flushT=null;
 let crop={img:null,x:0,y:0,scale:1,drag:false,sx:0,sy:0,baseScale:1};
 
 const isPrime=p=>!!(p&&p.primeUntil&&p.primeUntil>Date.now());
@@ -297,11 +335,26 @@ function nameHtml(p){
 }
 function titleOf(p){const it=ITEM[p&&p.title];return it&&it.k==='title'?it.name:''}
 const tcls=p=>{const t=tierOf(p);return t?'t-'+t:''};
-const clickVal=()=>isPrime(me)?10:(me.power||1);
+const clickVal=()=>me.power||1;
 function minerAcc(){const lv=me.minerLevel||0;if(!lv||!me.minerAt||!MINER[lv-1])return 0;return Math.floor(MINER[lv-1].rate*Math.max(0,Math.min(Date.now()-me.minerAt,MINER_CAP))/36e5)}
 const medal=i=>['🥇','🥈','🥉'][i]||('#'+(i+1));
 const ld=o=>new Date(Date.now()+o*864e5).toLocaleDateString('en-CA');
 
+let dlgRes=null;
+function ask(o){return new Promise(res=>{
+ if(dlgRes)dlgRes(false);dlgRes=res;
+ const f=(o.fields||[]).map((x,i)=>`<label>${esc(x.label)}</label><input id="dlgF${i}" type="${x.type||'text'}" maxlength="${x.max||60}" placeholder="${esc(x.ph||'')}" value="${esc(x.value||'')}" autocomplete="off">`).join('');
+ $('dlgBox').innerHTML=`<h3>${esc(o.title||'NEXORA')}</h3>${o.text?`<p class="muted" style="line-height:1.5;white-space:pre-wrap;margin:0">${esc(o.text)}</p>`:''}${f}<div class="row" style="margin-top:16px">${o.cancel===false?'':`<button class="btn secondary" onclick="dlgClose(false)">${esc(o.cancel||'Отмена')}</button>`}<button class="btn ${o.danger?'danger':o.warm?'warm':''}" onclick="dlgClose(true)">${esc(o.ok||'OK')}</button></div>`;
+ $('dlgModal').classList.remove('hidden');
+ const f0=$('dlgF0');if(f0)setTimeout(()=>f0.focus(),60);
+})}
+function dlgClose(ok){
+ const vals=[...document.querySelectorAll('#dlgBox input')].map(i=>i.value);
+ $('dlgModal').classList.add('hidden');const r=dlgRes;dlgRes=null;
+ if(r)r(ok?(vals.length?vals:true):(vals.length?null:false));
+}
+const say=(text,title)=>ask({title:title||'NEXORA',text,cancel:false,ok:'Понятно'});
+$('dlgBox').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT')dlgClose(true)});
 function toast(title,desc,icon='✨'){const h=$('toastHost');h.innerHTML=`<div class="nx-toast"><i>${icon}</i><div><b>${esc(title)}</b><small>${esc(desc)}</small></div></div>`;clearTimeout(window.__tt);window.__tt=setTimeout(()=>h.innerHTML='',3200)}
 
 /* ---------- запуск ---------- */
@@ -320,7 +373,7 @@ async function boot(){
 }
 async function onUser(user){
  if(unsubMe)unsubMe();if(unsubInbox)unsubInbox();unsubMe=unsubInbox=null;
- me=null;inbox=[];inboxFirst=true;authReady=false;entered=false;lastPK='';topKey='';achInit=false;achSeen={};goldMig=false;
+ battleReset();me=null;inbox=[];inboxFirst=true;authReady=false;entered=false;lastPK='';topKey='';achInit=false;achSeen={};goldMig=false;
  if(!user){try{await authM.signInAnonymously(auth)}catch(e){fatal('Не удалось войти: '+(e.code||e.message)+'. Проверь, что в Firebase включён Anonymous.')}return}
  uid=user.uid;
  let first=true;
@@ -345,22 +398,23 @@ function backFromRegister(){showWelcome()}
 
 async function register(){
  const n=$('nickname').value.trim();
- if(n.length<4||n.length>7||!NICK_RE.test(n))return alert('Никнейм: 4–7 символов, только буквы и цифры, без пробелов.');
- if(!uid)return alert('Подожди секунду, идёт подключение.');
+ {const ne=nickErr(n);if(ne)return say(ne)}
+ if(!uid)return say('Подожди секунду, идёт подключение.');
  const low=n.toLowerCase(),pid='NX'+Math.random().toString(36).slice(2,8).toUpperCase();
  $('regBtn').disabled=true;
  try{
   const b=fsM.writeBatch(db);
-  b.set(fsM.doc(db,'nicks',low),{uid});
-  b.set(fsM.doc(db,'players',uid),{pid,name:n,nameLower:low,avatar:pendingAvatar,coins:0,gems:0,clicks:0,power:1,primeUntil:0,primeTier:'',title:'',nameColor:'',owned:[],minerLevel:0,minerAt:0,daily:{last:'',streak:0},created:Date.now()});
+  b.set(fsM.doc(db,'nicks',nickKey(low)),{uid});
+  b.set(fsM.doc(db,'players',uid),{pid,name:n,nameLower:low,avatar:pendingAvatar,coins:0,gems:0,clicks:0,power:1,primeUntil:0,primeTier:'',nickCards:0,title:'',nameColor:'',owned:[],minerLevel:0,minerAt:0,daily:{last:'',streak:0},created:Date.now()});
   await b.commit();
   toast('Добро пожаловать!','Профиль создан. Забери ежедневный бонус на главной','🎉');
  }catch(e){
-  alert(e.code==='permission-denied'?'Такой ник уже занят. Придумай другой.':'Не удалось создать профиль: '+(e.code||e.message));
+  say(e.code==='permission-denied'?'Такой ник уже занят. Придумай другой.':'Не удалось создать профиль: '+(e.code||e.message));
  }
  $('regBtn').disabled=false;
 }
 function enterApp(){
+ setTimeout(resumePending,900);
  entered=true;show(null);$('app').classList.remove('hidden');$('tabbar').classList.remove('hidden');$('adminDot').classList.remove('hidden');
  $('tabbarIn').innerHTML=TABS.map(t=>`<button class="tab" data-p="${t[0]}" onclick="openPage('${t[0]}')"><span>${t[1]}</span>${t[2]}</button>`).join('');
  openPage('home');
@@ -392,7 +446,7 @@ function updateUI(){
  if(pk!==lastPK){lastPK=pk;if(entered){render();return}}
  const d=$('inboxDot');d.textContent=inbox.length;d.classList.toggle('hidden',!inbox.length);
  const tk=(me.avatar||'')+'|'+pk;if(tk!==topKey){topKey=tk;$('topAvatar').innerHTML=av(me,'mini-avatar sm')}
- [['playCoins',fmt(me.coins)],['playGems',fmt(me.gems)],['clickCount',fmt(me.clicks)],['clickVal','+'+clickVal()+' 🪙 за нажатие'+(isPrime(me)?' · PRIME':'')],['minerAcc',fmt(minerAcc())],['mGems',fmt(me.gems)]].forEach(([id,v])=>{const e=$(id);if(e)e.textContent=v});
+ [['playCoins',fmt(me.coins)],['playGems',fmt(me.gems)],['clickCount',fmt(me.clicks)],['clickVal','+'+clickVal()+' 🪙 за нажатие'],['minerAcc',fmt(minerAcc())],['mGems',fmt(me.gems)]].forEach(([id,v])=>{const e=$(id);if(e)e.textContent=v});
  const hs=$('heroStatus');if(hs)hs.innerHTML=heroStatus();
  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.p===page));
  if(!achInit){ACH.forEach(a=>{if(me.coins>=a.at)achSeen[a.name]=1});achInit=true}
@@ -401,7 +455,13 @@ function updateUI(){
 setInterval(()=>{if(me&&entered&&!document.hidden)updateUI()},5000);
 const heroStatus=()=>{const t=tierOf(me);return t?`${primeBadge(me)} до ${new Date(me.primeUntil).toLocaleDateString('ru-RU')}`:'Обычный аккаунт'};
 function head(t,back){return `<div class="pagehead">${back?`<button class="back" onclick="openPage('home')">←</button>`:''}<h2>${t}</h2></div>`}
-function openPage(p){page=p;if(p==='players')plLimit=100;clearInterval(plTimer);render();scrollTo(0,0);if(p==='players')plTimer=setInterval(()=>{if(page==='players'&&!document.hidden&&!$('psearch').value)loadPlayers()},30000)}
+function openPage(p){
+ if(page==='battle'&&p!=='battle'){
+  if(bt.st==='search')cancelSearch();
+  else if(['ready','live','fin'].includes(bt.st)){toast('Идёт батл','Дождись конца раунда','⚔️');return}
+  else if(bt.st==='done')bt.st='idle';
+ }
+ page=p;if(p==='players')plLimit=100;clearInterval(plTimer);render();scrollTo(0,0);if(p==='players')plTimer=setInterval(()=>{if(page==='players'&&!document.hidden&&!$('psearch').value)loadPlayers()},30000)}
 function render(){if(!me)return;$('view').innerHTML=(pages[page]||pages.home)();updateUI();if(page==='home')loadRank();if(page==='players')loadPlayers()}
 
 const upgradeCost=()=>(me.power||1)*(me.power||1)*200;
@@ -410,11 +470,12 @@ const pages={
 home(){
  const d=me.daily||{last:'',streak:0},can=d.last!==ld(0),unread=inbox.length,t=tierOf(me);
  return `<div class="hero ${tcls(me)} ${t?'prime':''}"><div class="profileline">${av(me,'mini-avatar lg')}<div><div class="muted small">ТВОЙ ПРОФИЛЬ</div><h1>${nameHtml(me)}</h1>${titleOf(me)?`<div class="ttl">${titleOf(me)}</div>`:''}<div class="muted small" style="margin-top:4px"><span id="heroStatus">${heroStatus()}</span> · 🏆 место <b id="rankVal">…</b></div></div></div></div>
- ${t?'':`<button class="banner" onclick="openPage('market')"><b>👑 Получи PRIME</b><small>Особый профиль и ровно +10 🪙 за каждый клик · от 500 💎</small></button>`}
+ ${t?'':`<button class="banner" onclick="openPage('market')"><b>👑 Получи ПРЕМИУМ</b><small>Особый профиль и яркое оформление в списке игроков · от 500 💎</small></button>`}
  <div class="daily"><div><b>🎁 Ежедневный бонус</b><small>${can?'Забери награду за сегодня!':`Серия: ${d.streak} дн. Приходи завтра`}</small></div><button class="btn warm small" ${can?'':'disabled'} onclick="claimDaily()">${can?'Забрать':'Получено'}</button></div>
+ <button class="banner" onclick="openPage('battle')"><b>⚔️ Батл 1 на 1</b><small>60 секунд кликов. Ставка монетами или алмазами. Победитель забирает всё.</small></button>
  <h3 class="section-title">Главное меню</h3><div class="grid">
  <button class="tile" onclick="openPage('play')"><span class="ico">🎮</span><b>Играть</b><small>Кликер и улучшения</small></button>
- <button class="tile" onclick="openPage('market')"><span class="ico">🏪</span><b>Рынок</b><small>PRIME, майнер, стиль</small></button>
+ <button class="tile" onclick="openPage('market')"><span class="ico">🏪</span><b>Рынок</b><small>ПРЕМИУМ, майнер, стиль</small></button>
  <button class="tile" onclick="openPage('players')"><span class="ico">🏆</span><b>Игроки</b><small>Рейтинг и список</small></button>
  <button class="tile" onclick="openPage('inbox')"><span class="ico">✉️</span><b>Сообщения</b><small>${unread?unread+' новых':'Писем нет'}</small></button>
  <button class="tile" onclick="openPage('promo')"><span class="ico">🎟️</span><b>Промокоды</b><small>Активировать код</small></button>
@@ -423,24 +484,31 @@ home(){
  <button class="tile" onclick="openPage('me')"><span class="ico">👤</span><b>Мой профиль</b><small>Данные и настройки</small></button>
  </div><div class="notice">✨ Заходи каждый день: серия дней увеличивает бонус.</div>`},
 play(){
- const mx=(me.power||1)>=MAX_POWER;
  return `<div class="page">${head('Игровая зона')}<div class="center"><p class="muted">Нажимай на ядро и собирай монеты.</p>
  ${wallet2()}
  <div class="clicker ${isPrime(me)?'prime '+tcls(me):''}" id="clickCore" onpointerdown="clickCore(event)">${isPrime(me)?TIERS[tierOf(me)].icon:'✦'}</div>
- <h2 id="clickVal">+${clickVal()} 🪙 за нажатие${isPrime(me)?' · PRIME':''}</h2><p class="muted">Всего нажатий: <b id="clickCount">${fmt(me.clicks)}</b></p>
- <button class="btn warm full" onclick="openPage('market')">🏪 Рынок: PRIME, майнер, стиль</button>
- <div class="product" style="text-align:left"><div class="product-head"><b>⚡ Сила клика ур. ${me.power||1}</b><span class="price">${mx?'МАКС':fmt(upgradeCost())+' 🪙'}</span></div><p class="hint">${isPrime(me)?'Сейчас у тебя PRIME: каждый клик ровно +10. Уровни сохраняются на случай, если PRIME закончится.':`Каждый уровень даёт +1 монету за нажатие (максимум ${MAX_POWER}). PRIME даёт +10.`}</p><button class="btn full" ${mx?'disabled':''} onclick="buyPower()">${mx?'Максимальный уровень':'Улучшить'}</button></div></div></div>`},
+ <h2 id="clickVal">+${clickVal()} 🪙 за нажатие</h2><p class="muted">Всего нажатий: <b id="clickCount">${fmt(me.clicks)}</b></p>
+ <button class="btn warm full" onclick="openPage('market')">🏪 Рынок: ПРЕМИУМ, майнер, стиль</button>
+ <div class="product" style="text-align:left"><div class="product-head"><b>⚡ Сила клика ур. ${me.power||1}</b><span class="price">${fmt(upgradeCost())} 🪙</span></div><p class="hint">Каждый уровень даёт +1 монету за нажатие.</p><button class="btn full" onclick="buyPower()">Улучшить</button></div></div></div>`},
+battle(){
+ if(bt.st==='search')return searchHtml();
+ if(['ready','live','fin'].includes(bt.st))return arenaHtml();
+ if(bt.st==='done')return resultHtml();
+ return lobbyHtml();
+},
 market(){
  const lv=me.minerLevel||0,cur=MINER[lv-1],nx=MINER[lv],t=tierOf(me);
  let body='';
  if(mTab==='prime'){
-  body=(t?`<div class="pcard ${tcls(me)}"><div class="ph">${av(me,'mini-avatar lg')}<div><div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div><div class="hint">Активен до ${new Date(me.primeUntil).toLocaleString('ru-RU')}</div><div class="hint">Клик: ровно +10 🪙</div></div></div></div>`:'<div class="notice">👑 С PRIME каждый клик даёт ровно <b>+10 🪙</b>, а профиль выглядит по-особенному. Чем дольше PRIME, тем ярче эффект.</div>')+
-  PRIME_PRICES.map((o,i)=>{const T=TIERS[o.tier];return `<div class="pcard t-${o.tier}"><div class="ph">${av(me,'mini-avatar lg',o.tier)}<div style="flex:1"><h3>${T.icon} ${T.name}</h3><div class="muted small">${o.label}</div></div><div class="pp nowrap">${fmt(o.price)} 💎</div></div><ul>${T.perks.map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn ${o.tier==='year'?'warm':''} full" onclick="buyPrime(${i})">Купить за ${fmt(o.price)} 💎</button></div>`}).join('')+
-  `<p class="hint">Повторная покупка продлевает срок. Если у тебя уже есть более высокий PRIME, он сохранится. Не хватает 💎? Обменяй монеты.</p><button class="btn secondary full" onclick="openPage('exchange')">🔄 Обменять монеты на алмазы</button>`;
+  body=(t?`<div class="pcard ${tcls(me)}"><div class="ph">${av(me,'mini-avatar lg')}<div><div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div><div class="hint">Активен до ${new Date(me.primeUntil).toLocaleString('ru-RU')}</div></div></div></div>`:'<div class="notice">👑 Премиум делает твой профиль особенным: рамка, сияющий ник и яркая строка в списке игроков. Чем дольше срок, тем ярче эффект.</div>')+
+  ПРЕМИУМ_PRICES.map((o,i)=>{const T=TIERS[o.tier];return `<div class="pcard t-${o.tier}"><div class="ph">${av(me,'mini-avatar lg',o.tier)}<div style="flex:1"><h3>${T.icon} ${T.name}</h3><div class="muted small">${o.label}</div></div><div class="pp nowrap">${fmt(o.price)} 💎</div></div><ul>${T.perks.map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn ${o.tier==='year'?'warm':''} full" onclick="buyPrime(${i})">Купить за ${fmt(o.price)} 💎</button></div>`}).join('')+
+  `<p class="hint">Повторная покупка продлевает срок. Если у тебя уже есть более высокий ПРЕМИУМ, он сохранится. Не хватает 💎? Обменяй монеты.</p><button class="btn secondary full" onclick="openPage('exchange')">🔄 Обменять монеты на алмазы</button>`;
  }else if(mTab==='miner'){
   body=`<div class="product"><div class="product-head"><b>⛏️ Майнер ${lv?'ур. '+lv:'(не куплен)'}</b><span class="price">${cur?fmt(cur.rate)+' 🪙/час':'—'}</span></div><p class="hint">Добывает монеты сам, даже когда тебя нет в игре. Копит до 8 часов, потом нужно забрать.</p>
   ${lv?`<div class="stat-cards" style="grid-template-columns:1fr"><div class="stat-card"><span>Накоплено</span><strong id="minerAcc">${fmt(minerAcc())}</strong><small>🪙</small></div></div><button class="btn full" onclick="claimMiner()">⛏️ Забрать монеты</button>`:''}
   ${nx?`<button class="btn warm full" style="margin-top:12px" onclick="buyMiner()">${lv?'Улучшить':'Купить'} до ур. ${lv+1} · ${fmt(nx.price)} 💎</button><p class="hint">Даст ${fmt(nx.rate)} 🪙 в час.</p>`:'<div class="notice" style="margin-top:12px">Максимальный уровень майнера!</div>'}</div>`;
+ }else if(mTab==='cards'){
+  body=`<div class="product"><div class="product-head"><b>🎫 Карточка смены ника</b><span class="price">${fmt(NICK_CARD)} 🪙</span></div><p class="hint">Одна карточка = одна смена ника. У тебя: <b>${fmt(me.nickCards||0)}</b>.</p><div class="row"><button class="btn warm" onclick="buyNickCard()">Купить</button><button class="btn secondary" onclick="changeNick()">Сменить ник</button></div></div><div class="notice">Монеты на карточку тратятся из твоего баланса 🪙.</div>`;
  }else{
   const own=x=>(me.owned||[]).includes(x.id),eq=x=>x.k==='title'?me.title===x.id:me.nameColor===x.val;
   const row=x=>`<div class="product"><div class="product-head"><b>${x.k==='title'?esc(x.name):`<span class="nm${x.val==='rainbow'?' rb':''}" ${x.val==='rainbow'?'':`style="color:${x.val}"`}>${esc(x.name)}</span>`}</b>${own(x)?`<button class="btn secondary small" onclick="equipItem('${x.id}')">${eq(x)?'Снять':'Надеть'}</button>`:`<button class="btn small" onclick="buyItem('${x.id}')">${fmt(x.price)} 💎</button>`}</div></div>`;
@@ -449,21 +517,21 @@ market(){
   <h3 class="section-title">Цвет ника</h3>${COLOR_LIST.map(x=>row({...x,k:'color'})).join('')}`;
  }
  return `<div class="page">${head('Рынок')}<div class="stat-cards" style="grid-template-columns:1fr"><div class="stat-card"><span>Твои алмазы</span><strong id="mGems">${fmt(me.gems)}</strong><small>💎</small></div></div>
- <div class="seg"><button class="${mTab==='prime'?'on':''}" onclick="setMTab('prime')">👑 PRIME</button><button class="${mTab==='miner'?'on':''}" onclick="setMTab('miner')">⛏️ Майнер</button><button class="${mTab==='style'?'on':''}" onclick="setMTab('style')">🎨 Стиль</button></div>${body}</div>`},
+ <div class="seg"><button class="${mTab==='prime'?'on':''}" onclick="setMTab('prime')">👑 Премиум</button><button class="${mTab==='miner'?'on':''}" onclick="setMTab('miner')">⛏️ Майнер</button><button class="${mTab==='style'?'on':''}" onclick="setMTab('style')">🎨 Стиль</button><button class="${mTab==='cards'?'on':''}" onclick="setMTab('cards')">🎫 Карточки</button></div>${body}</div>`},
 players(){
  return `<div class="page">${head('Список игроков')}<div class="notice">🌍 Это все игроки NEXORA. Рейтинг по монетам, обновляется сам.</div>
  <div class="row"><input id="psearch" placeholder="🔍 Поиск по нику или ID" oninput="filterPlayers()" autocomplete="off" style="flex:3"><button class="btn secondary" style="flex:1" onclick="loadPlayers()">🔄</button></div>
  <div id="plist" style="margin-top:6px"><div class="notice">Загрузка…</div></div></div>`},
 shop(){
- return `<div class="page">${head('Магазин NEXORA',1)}<p class="muted">Покупки за реальные деньги. Выбери товар: WhatsApp откроется с готовым сообщением. PRIME за алмазы можно купить в Рынке.</p>
+ return `<div class="page">${head('Магазин NEXORA',1)}<p class="muted">Покупки за реальные деньги. Выбери товар: WhatsApp откроется с готовым сообщением. ПРЕМИУМ за алмазы можно купить в Рынке.</p>
  <div class="product"><div class="product-head"><b>🎟️ Промокод</b><span class="price">от 5 сом</span></div><p class="hint">Случайная награда: игровая валюта или бонус.</p><button class="btn full" onclick="buy('Промокод','от 5 сом')">Купить через WhatsApp</button></div>
- ${[['1 день',3],['7 дней',10],['30 дней',30],['1 год',100]].map(a=>`<div class="product"><div class="product-head"><b>👑 PRIME — ${a[0]}</b><span class="price">${a[1]} сом</span></div><p class="hint">Выдаётся после подтверждения покупки. Чем дольше срок, тем ярче оформление профиля.</p><button class="btn warm full" onclick="buy('PRIME на ${a[0]}','${a[1]} сом')">Купить через WhatsApp</button></div>`).join('')}
+ ${[['1 день',3],['7 дней',10],['30 дней',30],['1 год',100]].map(a=>`<div class="product"><div class="product-head"><b>👑 ПРЕМИУМ — ${a[0]}</b><span class="price">${a[1]} сом</span></div><p class="hint">Выдаётся после подтверждения покупки. Чем дольше срок, тем ярче оформление профиля.</p><button class="btn warm full" onclick="buy('ПРЕМИУМ на ${a[0]}','${a[1]} сом')">Купить через WhatsApp</button></div>`).join('')}
  <div class="notice warn">Оплата и выдача товара согласуются вручную в WhatsApp. Не отправляй данные банковской карты или пароли.</div></div>`},
 me(){
  const u=auth.currentUser,linked=hasPw(u),t=tierOf(me);
  return `<div class="page">${head('Мой профиль')}<div class="center ${tcls(me)}"><div class="avatar-wrap">${av(me,'avatar')}</div>
  <h2>${nameHtml(me)}</h2>${t?`<div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div>`:''}${titleOf(me)?`<div><span class="ttl">${titleOf(me)}</span></div>`:''}<p class="muted">ID: <b>${esc(me.pid)}</b></p>
- <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(me.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(me.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">👆<strong>${fmt(me.clicks)}</strong><small>НАЖАТИЙ</small></div></div></div>
+ <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(me.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(me.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">👆<strong>${fmt(me.clicks)}</strong><small>НАЖАТИЙ</small></div><div class="stat-card">⚔️<strong>${fmt(me.bw||0)}</strong><small>ПОБЕД</small></div></div></div>
  <div class="row"><button class="btn secondary" onclick="pickAvatar('profile')">📷 Сменить фото</button><button class="btn secondary" onclick="changeNick()">✏️ Сменить ник</button></div>
  <h3 class="section-title">🔐 Сохранность аккаунта</h3>
  ${linked?`<div class="notice">✓ Аккаунт защищён паролем. Входи по нику <b>${esc(me.name)}</b> и паролю с любого устройства.</div><button class="btn secondary full" onclick="changePass()">Сменить пароль</button>`:`<div class="notice warn">Аккаунт сейчас привязан только к этому устройству. Если удалишь приложение или сменишь телефон, прогресс потеряется. Задай пароль.</div><button class="btn full" onclick="openProtect()">Защитить паролем</button>`}
@@ -486,9 +554,8 @@ function clickCore(ev){
   f.style.left=(x-25+(Math.random()*30-15))+'px';f.style.top=(y-30)+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),900)}
 }
 function buyPower(){
- if((me.power||1)>=MAX_POWER)return;
  const c=upgradeCost();if(me.coins<c)return toast('Не хватает монет',`Нужно ${fmt(c)} 🪙`,'⚠️');
- add('coins',-c);me.power=(me.power||1)+1;flush({power:me.power});render();toast('Улучшено!',isPrime(me)?`Уровень ${me.power} (с PRIME клик всё равно +10)`:`Теперь +${me.power} 🪙 за нажатие`,'⚡')
+ add('coins',-c);me.power=(me.power||1)+1;flush({power:me.power});render();toast('Улучшено!',`Теперь +${me.power} 🪙 за нажатие`,'⚡')
 }
 async function claimDaily(){
  const d=me.daily||{last:'',streak:0},today=ld(0);if(d.last===today)return;
@@ -503,13 +570,14 @@ function exchange(m){
  add('coins',-100*n);add('gems',n);flush();render();toast('Обмен выполнен',`+${fmt(n)} 💎`,'🔄');
 }
 function setMTab(t){mTab=t;render()}
-function buyPrime(i){
- const o=PRIME_PRICES[i];if(!o)return;
+async function buyPrime(i){
+ const o=ПРЕМИУМ_PRICES[i];if(!o)return;
  if(me.gems<o.price)return toast('Не хватает алмазов',`Нужно ${fmt(o.price)} 💎, у тебя ${fmt(me.gems)}`,'⚠️');
- if(!confirm(`Купить ${TIERS[o.tier].name} (${o.label}) за ${fmt(o.price)} 💎?`))return;
+ if(!await ask({title:'Покупка',text:`Купить ${TIERS[o.tier].name} (${o.label}) за ${fmt(o.price)} 💎?`,ok:'Купить',warm:true}))return;
+ if(me.gems<o.price)return;
  const cur=tierOf(me),tier=rankOf(cur)>=rankOf(o.tier)?cur:o.tier,until=Math.max(Date.now(),me.primeUntil||0)+o.days*864e5;
  add('gems',-o.price);me.primeUntil=until;me.primeTier=tier;flush({primeUntil:until,primeTier:tier});
- render();toast(TIERS[tier].name+' активен!','Каждый клик теперь ровно +10 🪙',TIERS[tier].icon);
+ render();toast(TIERS[tier].name+' активен!','Твой профиль теперь сияет',TIERS[tier].icon);
 }
 function claimMiner(){
  const a=minerAcc();if(a<1)return toast('Пока пусто','Майнер ещё копит монеты','⛏️');
@@ -534,6 +602,194 @@ function equipItem(id){
  render();
 }
 function buy(item,price){const msg=`Здравствуйте! Хочу приобрести в NEXORA: ${item}. Цена: ${price}. Мой ник: ${me?.name||'не указан'}, ID: ${me?.pid||'не указан'}. Подскажите, пожалуйста, как оплатить и получить товар.`;window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank')}
+
+/* ---------- батл ---------- */
+const setT=(id,v)=>{const e=$(id);if(e&&e.textContent!==String(v))e.textContent=v};
+const mmss=sec=>Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');
+function lobbyHtml(){
+ const bal=me[bt.type]||0,ic=ICONS[bt.type];
+ return `<div class="page">${head('⚔️ Батл')}<div class="notice">⚔️ Бой 1 на 1: 60 секунд кликов. Кто кликнет больше, тот забирает ставку соперника.</div>
+ <div class="seg"><button class="${bt.type==='coins'?'on':''}" onclick="setBType('coins')">🪙 Монеты</button><button class="${bt.type==='gems'?'on':''}" onclick="setBType('gems')">💎 Алмазы</button></div>
+ <div class="stakes">${BSTAKES[bt.type].map(a=>`<button class="stk ${bt.amt===a?'on':''} ${bal<a?'off':''}" onclick="setBAmt(${a})">${ic} ${fmt(a)}</button>`).join('')}</div>
+ <div class="notice">Ставка: <b>${ic} ${fmt(bt.amt)}</b><br>Победа: <b>+${fmt(bt.amt)}</b> · поражение: <b>−${fmt(bt.amt)}</b> · ничья: ставка возвращается.<br>У тебя: <b>${ic} ${fmt(bal)}</b></div>
+ <button class="btn warm full" onclick="battleSearch()">⚔️ Играть</button>
+ <p class="hint center" style="margin-top:10px">Ставка списывается сразу, как ты нажмёшь «Играть». Если соперник не найдётся, она вернётся.</p></div>`;
+}
+function searchHtml(){
+ return `<div class="page center">${head('⚔️ Батл')}<div class="loading-ring"></div><h3>Ищем соперника…</h3><p class="muted">Ставка: ${ICONS[bt.type]} ${fmt(bt.amt)} · прошло <b id="bWait">0</b> с</p><p class="hint">Как только другой игрок нажмёт «Играть» с такой же ставкой, бой начнётся.</p><button class="btn secondary full" onclick="cancelSearch()">Отмена</button></div>`;
+}
+function vsHtml(){
+ const op=bt.oppP||{name:(bt.names&&bt.names[1-bt.side])||'…'};
+ return `<div class="side">${av(me,'mini-avatar lg')}<span>${nameHtml(me)}</span></div><div class="vsx">VS</div><div class="side">${av(op,'mini-avatar lg')}<span>${nameHtml(op)}</span></div>`;
+}
+function arenaHtml(){
+ const ic=ICONS[bt.type];
+ return `<div class="page center">${head('⚔️ Батл')}<div class="vs" id="bVs">${vsHtml()}</div>
+ <div class="notice">Ставка: <b>${ic} ${fmt(bt.amt)}</b> · победитель забирает <b>${ic} ${fmt(bt.amt*2)}</b></div>
+ <div class="bbig" id="bBig">…</div><div class="muted" id="bTime">&nbsp;</div>
+ <div class="bscore"><div>Ты<b id="bMy">${fmt(bt.my)}</b></div><div>Соперник<b id="bOpp">${fmt(bt.oppc)}</b></div></div>
+ <div class="tug" id="bTug" style="--p:50%"></div>
+ <div class="btap" id="bTap" onpointerdown="battleTap(event)">ЖМИ!</div></div>`;
+}
+function resultHtml(){
+ const r=bt.res,ic=ICONS[bt.type],em={win:'🏆',lose:'💀',draw:'🤝'}[r.r],tt={win:'Победа!',lose:'Поражение',draw:'Ничья'}[r.r];
+ return `<div class="page center">${head('⚔️ Батл')}<div style="font-size:64px">${em}</div><h2>${tt}</h2><p class="muted">Ты: <b>${fmt(r.my)}</b> · Соперник: <b>${fmt(r.opp)}</b></p>
+ <div class="notice">${r.r==='win'?`+${fmt(bt.amt)} ${ic} (ставка соперника)`:r.r==='lose'?`−${fmt(bt.amt)} ${ic}`:'Ставка возвращена'}</div>
+ <button class="btn warm full" onclick="battleAgain()">⚔️ Ещё раз</button><button class="btn secondary full" style="margin-top:10px" onclick="openPage('home')">В меню</button></div>`;
+}
+function setBType(t){bt.type=t;bt.amt=BSTAKES[t][0];render()}
+function setBAmt(a){bt.amt=a;render()}
+function battleAgain(){bt.st='idle';render()}
+function pendKey(){return 'nx_pend_'+uid}
+function savePend(o){try{localStorage.setItem(pendKey(),JSON.stringify(o))}catch(e){}}
+function clearPend(){try{localStorage.removeItem(pendKey())}catch(e){}}
+function stopSearchTimers(){clearInterval(bt.hb);clearInterval(bt.scan);clearInterval(bt.wi);clearTimeout(bt.stT);if(bt.unsubQ){bt.unsubQ();bt.unsubQ=null}}
+function battleReset(){
+ stopSearchTimers();clearInterval(bt.tick);clearTimeout(bt.wTimer);clearTimeout(bt.finT);if(bt.unsubB){bt.unsubB();bt.unsubB=null}
+ bt={st:'idle',type:bt.type||'coins',amt:bt.amt||300,side:0,my:0,oppc:0,res:null};
+}
+async function battleSearch(){
+ if(bt.st!=='idle')return;
+ const type=bt.type,amt=bt.amt;
+ if((me[type]||0)<amt)return toast('Не хватает '+(type==='coins'?'монет':'алмазов'),`Для этой ставки нужно ${ICONS[type]} ${fmt(amt)}`,'⚠️');
+ add(type,-amt);await flush();
+ bt.key=type+'_'+amt;bt.st='search';bt.searchStart=Date.now();bt.settled=false;bt.fin=false;bt.created=0;bt.my=0;bt.oppc=0;bt.oppP=null;bt.lastDoc=null;
+ savePend({st:'queue',type,amt});
+ const qref=fsM.doc(db,'queue',uid);
+ try{await fsM.setDoc(qref,{uid,key:bt.key,name:me.name,ts:Date.now(),matched:null})}
+ catch(e){add(type,amt);flush();clearPend();bt.st='idle';render();return toast('Не удалось начать','Проверь интернет. Ставка возвращена','⚠️')}
+ bt.unsubQ=fsM.onSnapshot(qref,s=>{const d=s.exists()?s.data():null;if(d&&d.matched&&bt.st==='search')joinBattle(d.matched)},()=>{});
+ bt.hb=setInterval(()=>{fsM.updateDoc(qref,{ts:Date.now()}).catch(()=>{})},5000);
+ bt.scan=setInterval(scanQueue,2000);
+ bt.wi=setInterval(()=>setT('bWait',Math.floor((Date.now()-bt.searchStart)/1000)),1000);
+ bt.stT=setTimeout(()=>{if(bt.st==='search')cancelSearch(true)},90000);
+ render();scanQueue();
+}
+async function scanQueue(){
+ if(bt.st!=='search'||bt.scanning)return;bt.scanning=true;
+ try{
+  const s=await fsM.getDocs(fsM.query(fsM.collection(db,'queue'),fsM.where('key','==',bt.key),fsM.limit(20)));
+  const now=Date.now();
+  const cand=s.docs.map(d=>d.data()).filter(d=>d.uid>uid&&!d.matched&&now-(d.ts||0)<20000).sort((a,b)=>a.uid<b.uid?-1:1);
+  for(const c of cand){if(bt.st!=='search')break;if(await tryClaim(c.uid))break}
+ }catch(e){}
+ bt.scanning=false;
+}
+async function tryClaim(oid){
+ const bref=fsM.doc(fsM.collection(db,'battles')),mine=fsM.doc(db,'queue',uid),theirs=fsM.doc(db,'queue',oid);
+ try{
+  return await fsM.runTransaction(db,async tx=>{
+   const a=await tx.get(mine),b=await tx.get(theirs);
+   if(!a.exists()||!b.exists()||a.data().matched||b.data().matched)return false;
+   tx.update(mine,{matched:bref.id});tx.update(theirs,{matched:bref.id});
+   tx.set(bref,{players:[uid,oid],names:[me.name,b.data().name||'?'],key:bt.key,type:bt.type,amt:bt.amt,ca:0,cb:0,da:false,db:false,created:fsM.serverTimestamp()});
+   return true;
+  });
+ }catch(e){return false}
+}
+async function cancelSearch(timeout){
+ if(bt.st!=='search')return;
+ stopSearchTimers();
+ const qref=fsM.doc(db,'queue',uid);let m=null;
+ try{m=await fsM.runTransaction(db,async tx=>{const s=await tx.get(qref);if(s.exists()&&s.data().matched)return s.data().matched;tx.delete(qref);return null})}catch(e){}
+ if(m){bt.st='search';return joinBattle(m)}
+ add(bt.type,bt.amt);flush();clearPend();bt.st='idle';
+ if(page==='battle')render();
+ toast(timeout?'Соперник не найден':'Поиск отменён','Ставка возвращена','⚔️');
+}
+function joinBattle(bid){
+ if(bt.st!=='search')return;
+ stopSearchTimers();
+ bt.bid=bid;bt.st='ready';bt.created=0;
+ savePend({st:'battle',bid,type:bt.type,amt:bt.amt});
+ fsM.deleteDoc(fsM.doc(db,'queue',uid)).catch(()=>{});
+ bt.unsubB=fsM.onSnapshot(fsM.doc(db,'battles',bid),snap=>onBattle(snap),()=>{});
+ if(page!=='battle'){page='battle';clearInterval(plTimer)}
+ render();
+}
+function onBattle(snap){
+ if(!snap.exists())return;
+ const d=snap.data({serverTimestamps:'estimate'});if(!d||!d.created)return;
+ bt.lastDoc=d;
+ if(!bt.created){
+  bt.created=d.created.toMillis();bt.off=bt.created-Date.now();
+  bt.side=d.players.indexOf(uid);bt.opp=d.players[1-bt.side];bt.names=d.names;bt.type=d.type;bt.amt=d.amt;
+  bt.my=Math.max(bt.my,(bt.side===0?d.ca:d.cb)||0);
+  fsM.getDoc(fsM.doc(db,'players',bt.opp)).then(s=>{if(s.exists()){bt.oppP={uid:bt.opp,...s.data()};const v=$('bVs');if(v)v.innerHTML=vsHtml()}}).catch(()=>{});
+  render();clearInterval(bt.tick);bt.tick=setInterval(battleTick,200);battleTick();
+ }
+ bt.oppc=(bt.side===0?d.cb:d.ca)||0;
+ paintScore();
+ if(bt.fin&&d.da&&d.db)settleBattle();
+}
+function paintScore(){
+ const my=bt.my,op=bt.oppc,tot=my+op;
+ setT('bMy',fmt(my));setT('bOpp',fmt(op));
+ const t=$('bTug');if(t)t.style.setProperty('--p',(tot?Math.round(my/tot*100):50)+'%');
+}
+function battleTick(){
+ if(!bt.created||bt.settled)return;
+ const t=Date.now()+bt.off-bt.created,start=BPRE*1000,end=start+BDUR*1000,big=$('bBig'),tap=$('bTap');
+ if(t<start){
+  const left=Math.ceil((start-t)/1000);
+  if(big){big.classList.remove('go');big.textContent=left<=3?String(left):'⚔️'}
+  setT('bTime',left<=3?'Приготовься…':'Соперник найден!');
+ }else if(t<end){
+  if(bt.st==='ready')bt.st='live';
+  if(big){big.classList.add('go');big.textContent=t<start+1000?'ЖМИ!':String(fmt(bt.my))}
+  setT('bTime','Осталось: '+mmss(Math.ceil((end-t)/1000))+' с');
+  if(tap)tap.classList.add('on');
+ }else if(!bt.fin){
+  bt.fin=true;bt.st='fin';clearTimeout(bt.wTimer);
+  if(tap)tap.classList.remove('on');if(big){big.classList.remove('go');big.textContent='⏱'}
+  setT('bTime','Считаем результат…');
+  writeCount(true);
+  bt.finT=setTimeout(settleBattle,6000);
+ }
+}
+function battleTap(ev){
+ if(bt.st!=='live')return;
+ bt.my++;paintScore();setT('bBig',fmt(bt.my));
+ if(!bt.wTimer)bt.wTimer=setTimeout(()=>{bt.wTimer=null;writeCount(false)},1000);
+}
+function writeCount(final){
+ if(!bt.bid)return;
+ const upd=bt.side===0?{ca:bt.my}:{cb:bt.my};
+ if(final){if(bt.side===0)upd.da=true;else upd.db=true}
+ fsM.updateDoc(fsM.doc(db,'battles',bt.bid),upd).catch(()=>{});
+}
+function settleBattle(){
+ if(bt.settled)return;bt.settled=true;
+ clearTimeout(bt.finT);clearTimeout(bt.wTimer);clearInterval(bt.tick);if(bt.unsubB){bt.unsubB();bt.unsubB=null}
+ const d=bt.lastDoc||{ca:0,cb:0},my=(bt.side===0?d.ca:d.cb)||0,op=(bt.side===0?d.cb:d.ca)||0;
+ let r='draw';
+ if(my>op){r='win';add(bt.type,bt.amt*2);flush({bw:fsM.increment(1)})}
+ else if(my<op){r='lose';flush({bl:fsM.increment(1)})}
+ else{add(bt.type,bt.amt);flush()}
+ clearPend();
+ const bid=bt.bid,first=bt.side===0;
+ if(first)setTimeout(()=>fsM.deleteDoc(fsM.doc(db,'battles',bid)).catch(()=>{}),30000);
+ bt.res={r,my,opp:op};bt.st='done';
+ if(page==='battle')render();
+ toast(r==='win'?'Победа!':r==='lose'?'Поражение':'Ничья',r==='win'?`+${fmt(bt.amt)} ${ICONS[bt.type]}`:r==='lose'?`−${fmt(bt.amt)} ${ICONS[bt.type]}`:'Ставка возвращена',r==='win'?'🏆':r==='lose'?'💀':'🤝');
+}
+async function resumePending(){
+ let p=null;try{p=JSON.parse(localStorage.getItem(pendKey())||'null')}catch(e){}
+ if(!p||bt.st!=='idle'||!me)return;
+ try{
+  bt.type=p.type;bt.amt=p.amt;
+  if(p.st==='queue'){
+   const qs=await fsM.getDoc(fsM.doc(db,'queue',uid));
+   if(qs.exists()&&qs.data().matched){bt.st='search';bt.settled=false;bt.fin=false;joinBattle(qs.data().matched);return}
+   if(qs.exists())await fsM.deleteDoc(fsM.doc(db,'queue',uid));
+   add(p.type,p.amt);flush();clearPend();toast('Поиск был прерван','Ставка возвращена','⚔️');
+  }else if(p.st==='battle'){
+   const bs=await fsM.getDoc(fsM.doc(db,'battles',p.bid));
+   if(bs.exists()){bt.st='search';bt.settled=false;bt.fin=false;joinBattle(p.bid)}
+   else clearPend();
+  }
+ }catch(e){}
+}
 
 /* ---------- игроки ---------- */
 async function loadRank(){
@@ -578,10 +834,10 @@ function openProfile(id){
  const sh=$('profileSheet');sh.className='profile-sheet '+(t?'prime t-'+t:'');
  sh.innerHTML=`<div style="width:42px;height:5px;border-radius:9px;background:#65718b;margin:0 auto 14px"></div>
  <div class="${t?'pbanner':''} center"><div class="avatar-wrap">${av(p,'avatar')}</div><h2 style="margin:6px 0 0">${nameHtml(p)}</h2>${t?`<div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div><div class="muted small">до ${new Date(p.primeUntil).toLocaleDateString('ru-RU')}</div>`:''}${titleOf(p)?`<div><span class="ttl">${titleOf(p)}</span></div>`:''}<p class="muted small">ID: ${esc(p.pid)}</p></div>
- <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(p.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(p.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">👆<strong>${fmt(p.clicks)}</strong><small>НАЖАТИЙ</small></div></div>
+ <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(p.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(p.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">👆<strong>${fmt(p.clicks)}</strong><small>НАЖАТИЙ</small></div><div class="stat-card">⚔️<strong>${fmt(p.bw||0)}</strong><small>ПОБЕД</small></div></div>
  <h3>🏆 Достижения и титулы</h3><div class="ach-grid">${ACH.map(a=>`<div class="ach-slot ${p.coins>=a.at?'':'locked'}"><span>${p.coins>=a.at?a.icon:'🔒'}</span><small>${a.name}</small></div>`).join('')}</div>
  <div class="hint">${next?`Следующий титул: <b>${next.title}</b> · ${fmt(p.coins)} / ${fmt(next.at)} монет`:'Все пять символов открыты!'}</div>
- ${mine&&!t?`<button class="btn warm full" style="margin-top:14px" onclick="closeProfile();openPage('market')">👑 Получить PRIME</button>`:''}
+ ${mine&&!t?`<button class="btn warm full" style="margin-top:14px" onclick="closeProfile();openPage('market')">👑 Получить ПРЕМИУМ</button>`:''}
  <button class="btn secondary full" style="margin-top:12px" onclick="closeProfile()">Закрыть</button>`;
  $('profileModal').classList.remove('hidden');
 }
@@ -589,14 +845,26 @@ function closeProfile(){$('profileModal').classList.add('hidden')}
 
 /* ---------- профиль и аккаунт ---------- */
 async function changeNick(){
- const n=(prompt('Новый ник (4–7 символов, буквы и цифры):',me.name)||'').trim();if(!n||n===me.name)return;
- if(n.length<4||n.length>7||!NICK_RE.test(n))return alert('Ник: 4–7 символов, только буквы и цифры.');
- const low=n.toLowerCase(),pref=fsM.doc(db,'players',uid);
+ if(!(me.nickCards>0)){
+  const go=await ask({title:'🎫 Карточка смены ника',text:`Чтобы сменить ник, нужна карточка.\nЦена: ${fmt(NICK_CARD)} 🪙. У тебя ${fmt(me.coins)} 🪙.`,ok:'Купить карточку',warm:true});
+  if(!go||!buyNickCard(true))return;
+ }
+ const r=await ask({title:'✏️ Новый ник',text:`От ${NICK_MIN} до ${NICK_MAX} символов: буквы, цифры, символы. Нужна хотя бы одна буква. Будет потрачена 1 карточка.`,fields:[{label:'Ник',value:me.name,max:NICK_MAX,ph:'Новый ник'}],ok:'Сменить'});
+ if(!r)return;const n=r[0].trim();if(!n||n===me.name)return;
+ const ne=nickErr(n);if(ne)return say(ne);
+ await flush();
+ const low=n.toLowerCase(),pref=fsM.doc(db,'players',uid),dec=fsM.increment(-1);
  try{
-  if(low===me.nameLower)await fsM.updateDoc(pref,{name:n});
-  else{const b=fsM.writeBatch(db);b.delete(fsM.doc(db,'nicks',me.nameLower));b.set(fsM.doc(db,'nicks',low),{uid});b.update(pref,{name:n,nameLower:low});await b.commit()}
+  if(low===me.nameLower)await fsM.updateDoc(pref,{name:n,nickCards:dec});
+  else{const b=fsM.writeBatch(db);b.delete(fsM.doc(db,'nicks',nickKey(me.nameLower)));b.set(fsM.doc(db,'nicks',nickKey(low)),{uid});b.update(pref,{name:n,nameLower:low,nickCards:dec});await b.commit()}
   toast('Ник изменён',n,'✏️');render();
- }catch(e){alert('Такой ник уже занят или нет связи.')}
+ }catch(e){say('Такой ник уже занят или нет связи. Карточка не потрачена.')}
+}
+function buyNickCard(inline){
+ if(me.coins<NICK_CARD){toast('Не хватает монет',`Нужно ${fmt(NICK_CARD)} 🪙`,'⚠️');return false}
+ add('coins',-NICK_CARD);add('nickCards',1);flush();
+ if(!inline){render();toast('Карточка куплена','Теперь можно сменить ник','🎫')}
+ return true;
 }
 function authErr(e){
  const c=e.code||'';
@@ -614,7 +882,7 @@ const hasPw=u=>!!(u&&u.providerData&&u.providerData.some(p=>p.providerId==='pass
 function closeAuth(){$('authModal').classList.add('hidden')}
 function openLogin(){
  $('authBox').innerHTML=`<h3>🔑 Вход в аккаунт</h3><p class="hint">Введи ник и пароль, который ты задал в профиле.</p>
- <label>Ник</label><input id="lgNick" maxlength="7" autocomplete="off" placeholder="Твой ник">
+ <label>Ник</label><input id="lgNick" maxlength="10" autocomplete="off" placeholder="Твой ник">
  <label>Пароль</label><input id="lgPass" type="password" autocomplete="off" placeholder="Пароль">
  <button class="btn full" style="margin-top:12px" id="lgBtn" onclick="doLogin()">Войти</button>
  <button class="btn secondary full" style="margin-top:9px" onclick="closeAuth()">Отмена</button>`;
@@ -622,14 +890,14 @@ function openLogin(){
 }
 async function doLogin(){
  const n=$('lgNick').value.trim().toLowerCase(),pw=$('lgPass').value;
- if(!n||!pw)return alert('Введи ник и пароль.');
+ if(!n||!pw)return say('Введи ник и пароль.');
  $('lgBtn').disabled=true;
  try{
-  const ns=await fsM.getDoc(fsM.doc(db,'nicks',n));if(!ns.exists())throw {code:'auth/invalid-credential'};
+  const ns=await fsM.getDoc(fsM.doc(db,'nicks',nickKey(n)));if(!ns.exists())throw {code:'auth/invalid-credential'};
   const ps=await fsM.getDoc(fsM.doc(db,'players',ns.data().uid));if(!ps.exists())throw {code:'auth/invalid-credential'};
   await authM.signInWithEmailAndPassword(auth,pwEmail(ps.data().pid),pw);
   closeAuth();
- }catch(e){alert(authErr(e))}
+ }catch(e){say(authErr(e))}
  const b=$('lgBtn');if(b)b.disabled=false;
 }
 function openProtect(){
@@ -642,37 +910,37 @@ function openProtect(){
 }
 async function doProtect(){
  const a=$('pwA').value,b=$('pwB').value;
- if(a.length<6)return alert('Пароль должен быть не короче 6 символов.');
- if(a!==b)return alert('Пароли не совпадают.');
+ if(a.length<6)return say('Пароль должен быть не короче 6 символов.');
+ if(a!==b)return say('Пароли не совпадают.');
  $('pwBtn').disabled=true;
  try{
   await authM.linkWithCredential(auth.currentUser,authM.EmailAuthProvider.credential(pwEmail(me.pid),a));
   closeAuth();toast('Аккаунт защищён','Входи по нику и паролю с любого устройства','🔐');render();
- }catch(e){alert(authErr(e))}
+ }catch(e){say(authErr(e))}
  const x=$('pwBtn');if(x)x.disabled=false;
 }
 async function changePass(){
  const u=auth.currentUser;if(!hasPw(u))return;
- const old=prompt('Текущий пароль:');if(old===null)return;
- const nw=prompt('Новый пароль (от 6 символов):');if(nw===null)return;
- if(nw.length<6)return alert('Пароль должен быть не короче 6 символов.');
+ const r=await ask({title:'🔐 Смена пароля',fields:[{label:'Текущий пароль',type:'password'},{label:'Новый пароль (от 6 символов)',type:'password'}],ok:'Сменить'});
+ if(!r)return;const [old,nw]=r;
+ if(nw.length<6)return say('Пароль должен быть не короче 6 символов.');
  try{
   await authM.reauthenticateWithCredential(u,authM.EmailAuthProvider.credential(pwEmail(me.pid),old));
   await authM.updatePassword(u,nw);toast('Пароль изменён','','🔐');
- }catch(e){alert(authErr(e))}
+ }catch(e){say(authErr(e))}
 }
 async function signOutAsk(){
  const u=auth.currentUser;
- if(!hasPw(u)&&!confirm('Аккаунт не защищён паролем. После выхода ты потеряешь доступ к этому профилю. Выйти?'))return;
+ if(!hasPw(u)&&!await ask({title:'Выйти без пароля?',text:'Аккаунт не защищён паролем. После выхода ты потеряешь доступ к этому профилю.',ok:'Всё равно выйти',danger:true}))return;
  await flush();await authM.signOut(auth);
 }
 async function deleteMe(){
- if(!confirm('Удалить профиль «'+me.name+'» и весь прогресс? Это нельзя отменить.'))return;
+ if(!await ask({title:'Удалить профиль?',text:'Профиль «'+me.name+'» и весь прогресс будут удалены. Это нельзя отменить.',ok:'Удалить',danger:true}))return;
  try{
   const s=await fsM.getDocs(fsM.collection(db,'players',uid,'inbox')),b=fsM.writeBatch(db);
-  s.docs.forEach(d=>b.delete(d.ref));b.delete(fsM.doc(db,'nicks',me.nameLower));b.delete(fsM.doc(db,'players',uid));await b.commit();
+  s.docs.forEach(d=>b.delete(d.ref));b.delete(fsM.doc(db,'nicks',nickKey(me.nameLower)));b.delete(fsM.doc(db,'players',uid));await b.commit();
   for(const k in pend)pend[k]=0;
- }catch(e){alert('Не удалось удалить: '+(e.code||e.message))}
+ }catch(e){say('Не удалось удалить: '+(e.code||e.message))}
 }
 
 /* ---------- аватар ---------- */
@@ -687,22 +955,22 @@ function clampCrop(){
 function resetCropPosition(){crop.x=0;crop.y=0;crop.scale=1;$('zoom').value='1';clampCrop()}
 $('avatarFile').addEventListener('change',e=>{
  const f=e.target.files[0];if(!f)return;
- if(!f.type.startsWith('image/')){alert('Выбери изображение.');e.target.value='';return}
- if(f.size>12*1024*1024){alert('Фото должно быть меньше 12 МБ.');e.target.value='';return}
- const r=new FileReader();r.onerror=()=>{alert('Не удалось прочитать фото.');e.target.value=''};
- r.onload=()=>{const img=$('cropImage');img.onload=()=>{crop.img=r.result;crop.x=0;crop.y=0;crop.scale=1;$('zoom').value='1';$('cropModal').classList.remove('hidden');requestAnimationFrame(clampCrop)};img.onerror=()=>{alert('Не удалось открыть изображение.');e.target.value=''};img.src=r.result};
+ if(!f.type.startsWith('image/')){say('Выбери изображение.');e.target.value='';return}
+ if(f.size>12*1024*1024){say('Фото должно быть меньше 12 МБ.');e.target.value='';return}
+ const r=new FileReader();r.onerror=()=>{say('Не удалось прочитать фото.');e.target.value=''};
+ r.onload=()=>{const img=$('cropImage');img.onload=()=>{crop.img=r.result;crop.x=0;crop.y=0;crop.scale=1;$('zoom').value='1';$('cropModal').classList.remove('hidden');requestAnimationFrame(clampCrop)};img.onerror=()=>{say('Не удалось открыть изображение.');e.target.value=''};img.src=r.result};
  r.readAsDataURL(f);
 });
 function cancelCrop(){$('cropModal').classList.add('hidden');$('avatarFile').value=''}
 async function saveCrop(){
- const img=$('cropImage'),box=$('cropBox');if(!img.naturalWidth)return alert('Подожди, пока фото загрузится.');
+ const img=$('cropImage'),box=$('cropBox');if(!img.naturalWidth)return say('Подожди, пока фото загрузится.');
  clampCrop();const sc=crop.baseScale*crop.scale,size=box.clientWidth/sc;
  let sx=(img.naturalWidth-size)/2-crop.x/sc,sy=(img.naturalHeight-size)/2-crop.y/sc;
  sx=Math.max(0,Math.min(img.naturalWidth-size,sx));sy=Math.max(0,Math.min(img.naturalHeight-size,sy));
- const c=document.createElement('canvas');c.width=160;c.height=160;const ctx=c.getContext('2d');if(!ctx)return alert('Браузер не смог подготовить фото.');
+ const c=document.createElement('canvas');c.width=160;c.height=160;const ctx=c.getContext('2d');if(!ctx)return say('Браузер не смог подготовить фото.');
  ctx.drawImage(img,sx,sy,size,size,0,0,160,160);const url=c.toDataURL('image/jpeg',.75);
  if(avatarMode==='register'){pendingAvatar=url;$('previewAvatar').innerHTML=`<img src="${url}" alt="">`;cancelCrop()}
- else if(me){try{await fsM.updateDoc(fsM.doc(db,'players',uid),{avatar:url});me.avatar=url;cancelCrop();render();toast('Фото обновлено','Его видят все игроки','📷')}catch(e){alert('Не удалось сохранить фото: '+(e.code||e.message))}}
+ else if(me){try{await fsM.updateDoc(fsM.doc(db,'players',uid),{avatar:url});me.avatar=url;cancelCrop();render();toast('Фото обновлено','Его видят все игроки','📷')}catch(e){say('Не удалось сохранить фото: '+(e.code||e.message))}}
 }
 $('zoom').addEventListener('input',e=>{crop.scale=Number(e.target.value);clampCrop()});
 $('cropBox').addEventListener('pointerdown',e=>{if(!crop.img)return;crop.drag=true;crop.sx=e.clientX;crop.sy=e.clientY;try{$('cropBox').setPointerCapture(e.pointerId)}catch(err){}});
@@ -760,20 +1028,25 @@ async function redeemPromo(){const i=$('promoInput');if(!i)return;if(await apply
 /* ---------- админ (вход по почте и паролю) ---------- */
 let adm=null,admCache={},admT=null,pickTarget=null;
 function admInit(){if(adm)return;const a2=appM.initializeApp(cfg,'admin');adm={app:a2,auth:authM.getAuth(a2),db:fsM.getFirestore(a2)}}
-function adminLogin(){
+async function adminLogin(){
  admInit();$('adminModal').classList.remove('hidden');
+ $('adminBox').innerHTML='<div class="center muted">Загрузка…</div>';
+ try{await adm.auth.authStateReady()}catch(e){}
  if(adm.auth.currentUser){adminVerify();return}
+ let em='';try{em=localStorage.getItem('nx_adm')||''}catch(e){}
  $('adminBox').innerHTML=`<h3>♜ Служебный вход</h3><div class="notice">Вход только для администратора. Игровой аккаунт не затрагивается.</div>
- <label>Почта админа</label><input id="admEmail" type="email" autocomplete="off" placeholder="Почта админа">
+ ${em?`<input id="admEmail" type="hidden" value="${esc(em)}"><div class="who ok">Админ: ${esc(em)}</div><button class="btn secondary small" style="margin-top:8px" onclick="admOtherEmail()">Другая почта</button>`:`<label>Почта админа</label><input id="admEmail" type="email" autocomplete="off" placeholder="Почта админа">`}
  <label>Пароль</label><input id="admPass" type="password" autocomplete="off" placeholder="Пароль">
  <button class="btn full" style="margin-top:12px" id="admBtn" onclick="adminSignIn()">Войти</button>
  <button class="btn secondary full" style="margin-top:9px" onclick="closeAdmin()">Отмена</button>`;
+ setTimeout(()=>{const x=$(em?'admPass':'admEmail');if(x)x.focus()},60);
 }
+function admOtherEmail(){try{localStorage.removeItem('nx_adm')}catch(e){}adminLogin()}
 function closeAdmin(){$('adminModal').classList.add('hidden')}
 async function adminSignIn(){
- const em=$('admEmail').value.trim(),pw=$('admPass').value;if(!em||!pw)return alert('Введи почту и пароль.');
+ const em=$('admEmail').value.trim(),pw=$('admPass').value;if(!em||!pw)return say('Введи почту и пароль.');
  $('admBtn').disabled=true;
- try{await authM.signInWithEmailAndPassword(adm.auth,em,pw)}catch(e){alert(authErr(e));const x=$('admBtn');if(x)x.disabled=false;return}
+ try{await authM.signInWithEmailAndPassword(adm.auth,em,pw);try{localStorage.setItem('nx_adm',em)}catch(e2){}}catch(e){say(authErr(e));const x=$('admBtn');if(x)x.disabled=false;return}
  adminVerify();
 }
 async function adminVerify(){
@@ -801,8 +1074,8 @@ function adminPanel(keep){
  <div class="admin-section"><h4>⚡ Выдать сразу</h4>
   <div class="row"><div><select id="gType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option></select></div><div><input id="gAmount" type="number" min="1" max="1000000" value="100"></div></div>
   <button class="btn full" style="margin-top:8px" onclick="admGrant()">Выдать награду</button>
-  <label>PRIME</label><select id="primeDays"><option value="1">1 день</option><option value="7">7 дней</option><option value="30">30 дней</option><option value="365">1 год</option></select>
-  <div class="row" style="margin-top:8px"><button class="btn warm" onclick="admPrime()">👑 Выдать PRIME</button><button class="btn secondary" onclick="admUnprime()">Снять</button></div>
+  <label>ПРЕМИУМ</label><select id="primeDays"><option value="1">1 день</option><option value="7">7 дней</option><option value="30">30 дней</option><option value="365">1 год</option></select>
+  <div class="row" style="margin-top:8px"><button class="btn warm" onclick="admPrime()">👑 Выдать ПРЕМИУМ</button><button class="btn secondary" onclick="admUnprime()">Снять</button></div>
   <button class="btn danger full" style="margin-top:12px" onclick="admDelete()">🗑 Удалить игрока</button></div>
  <div class="admin-section"><h4>🌍 Общий промокод (для всех)</h4>
   <label>Код</label><input id="gcCode" maxlength="24" placeholder="Например: NEWYEAR" autocomplete="off">
@@ -830,42 +1103,42 @@ async function admPreview(fresh){
   w.className='who ok';const tt=tierOf(p);w.innerHTML=`✓ <b>${esc(p.name)}</b> ${tt?'· '+TIERS[tt].icon+' '+TIERS[tt].name:''}<br>🪙 ${fmt(p.coins)} · 💎 ${fmt(p.gems)}`;
  }catch(e){w.className='who bad';w.textContent='Ошибка: '+(e.code||e.message)}
 }
-async function admTargetOrAlert(){try{const p=await admResolve(true);if(!p)alert('Игрок не найден. Нажми «Выбрать из списка».');return p}catch(e){alert('Ошибка: '+(e.code||e.message));return null}}
-function admNum(id){const n=Number($(id).value);if(!Number.isInteger(n)||n<1||n>1000000){alert('Укажи целое число от 1 до 1 000 000.');return null}return n}
+async function admTargetOrAlert(){try{const p=await admResolve(true);if(!p)say('Игрок не найден. Нажми «Выбрать из списка».');return p}catch(e){say('Ошибка: '+(e.code||e.message));return null}}
+function admNum(id){const n=Number($(id).value);if(!Number.isInteger(n)||n<1||n>1000000){say('Укажи целое число от 1 до 1 000 000.');return null}return n}
 async function sendAdminMessage(){
  const p=await admTargetOrAlert();if(!p)return;
  const title=$('mTitle').value.trim()||'Подарок от NEXORA',text=$('mText').value.trim()||'Администратор отправил тебе подарок.',code=$('mCode').value.trim().toUpperCase().replace(/\s+/g,''),type=$('mType').value;
  try{
   if(code){
-   if(!CODE_RE.test(code))return alert('Промокод: 3–24 символа, латинские буквы, цифры, дефис или подчёркивание.');
+   if(!CODE_RE.test(code))return say('Промокод: 3–24 символа, латинские буквы, цифры, дефис или подчёркивание.');
    const amount=admNum('mAmount');if(!amount)return;
-   const cref=fsM.doc(adm.db,'codes',code);if((await fsM.getDoc(cref)).exists())return alert('Такой промокод уже существует. Придумай другой.');
+   const cref=fsM.doc(adm.db,'codes',code);if((await fsM.getDoc(cref)).exists())return say('Такой промокод уже существует. Придумай другой.');
    await fsM.setDoc(cref,{type,amount,max:1,uses:0,target:p.uid,created:Date.now()});
   }
   await fsM.addDoc(fsM.collection(adm.db,'players',p.uid,'inbox'),{title,text,code,createdAt:Date.now()});
   ['mTitle','mText','mCode'].forEach(i=>$(i).value='');toast('Сообщение отправлено',`Игроку ${p.name}`,'📨');loadAdminCodes();
- }catch(e){alert('Не удалось отправить: '+(e.code||e.message))}
+ }catch(e){say('Не удалось отправить: '+(e.code||e.message))}
 }
 async function admGrant(){const p=await admTargetOrAlert();if(!p)return;const n=admNum('gAmount');if(!n)return;const t=$('gType').value;
- try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{[t]:fsM.increment(n)});admPreview(true);toast('Награда выдана',`${p.name}: +${fmt(n)} ${LABELS[t]}`,'⚡')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
+ try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{[t]:fsM.increment(n)});admPreview(true);toast('Награда выдана',`${p.name}: +${fmt(n)} ${LABELS[t]}`,'⚡')}catch(e){say('Ошибка: '+(e.code||e.message))}}
 async function admPrime(){const p=await admTargetOrAlert();if(!p)return;const d=Number($('primeDays').value);
  const cur=tierOf(p),nt=TIER_BY_DAYS[d]||'day',tier=rankOf(cur)>=rankOf(nt)?cur:nt;
- try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:Math.max(Date.now(),p.primeUntil||0)+d*864e5,primeTier:tier});admPreview(true);toast('PRIME активирован',p.name,'👑')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
+ try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:Math.max(Date.now(),p.primeUntil||0)+d*864e5,primeTier:tier});admPreview(true);toast('ПРЕМИУМ активирован',p.name,'👑')}catch(e){say('Ошибка: '+(e.code||e.message))}}
 async function admUnprime(){const p=await admTargetOrAlert();if(!p)return;
- try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:0,primeTier:''});admPreview(true);toast('PRIME снят',p.name,'👑')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
+ try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:0,primeTier:''});admPreview(true);toast('ПРЕМИУМ снят',p.name,'👑')}catch(e){say('Ошибка: '+(e.code||e.message))}}
 async function admDelete(){
- const p=await admTargetOrAlert();if(!p)return;if(!confirm('Удалить игрока «'+p.name+'» ('+p.pid+') со всем прогрессом?'))return;
+ const p=await admTargetOrAlert();if(!p)return;if(!await ask({title:'Удалить игрока?',text:'«'+p.name+'» ('+p.pid+') будет удалён со всем прогрессом.',ok:'Удалить',danger:true}))return;
  try{
   const s=await fsM.getDocs(fsM.collection(adm.db,'players',p.uid,'inbox')),b=fsM.writeBatch(adm.db);
-  s.docs.forEach(d=>b.delete(d.ref));b.delete(fsM.doc(adm.db,'nicks',p.nameLower));b.delete(fsM.doc(adm.db,'players',p.uid));await b.commit();
+  s.docs.forEach(d=>b.delete(d.ref));b.delete(fsM.doc(adm.db,'nicks',nickKey(p.nameLower)));b.delete(fsM.doc(adm.db,'players',p.uid));await b.commit();
   admCache={};toast('Игрок удалён',p.name,'🗑');adminPanel('');
- }catch(e){alert('Ошибка: '+(e.code||e.message))}
+ }catch(e){say('Ошибка: '+(e.code||e.message))}
 }
 async function admGlobalCode(){
- const c=$('gcCode').value.trim().toUpperCase().replace(/\s+/g,'');if(!CODE_RE.test(c))return alert('Код: 3–24 символа, латинские буквы, цифры, дефис или подчёркивание.');
- const amount=admNum('gcAmount');if(!amount)return;const max=Number($('gcMax').value);if(!Number.isInteger(max)||max<1||max>1000000)return alert('Активаций: от 1 до 1 000 000.');
- try{const cref=fsM.doc(adm.db,'codes',c);if((await fsM.getDoc(cref)).exists())return alert('Такой код уже существует.');
-  await fsM.setDoc(cref,{type:$('gcType').value,amount,max,uses:0,target:null,created:Date.now()});toast('Код создан',c,'🌍');$('gcCode').value='';loadAdminCodes()}catch(e){alert('Ошибка: '+(e.code||e.message))}
+ const c=$('gcCode').value.trim().toUpperCase().replace(/\s+/g,'');if(!CODE_RE.test(c))return say('Код: 3–24 символа, латинские буквы, цифры, дефис или подчёркивание.');
+ const amount=admNum('gcAmount');if(!amount)return;const max=Number($('gcMax').value);if(!Number.isInteger(max)||max<1||max>1000000)return say('Активаций: от 1 до 1 000 000.');
+ try{const cref=fsM.doc(adm.db,'codes',c);if((await fsM.getDoc(cref)).exists())return say('Такой код уже существует.');
+  await fsM.setDoc(cref,{type:$('gcType').value,amount,max,uses:0,target:null,created:Date.now()});toast('Код создан',c,'🌍');$('gcCode').value='';loadAdminCodes()}catch(e){say('Ошибка: '+(e.code||e.message))}
 }
 async function loadAdminCodes(){
  const el=$('admCodes');if(!el)return;
@@ -875,7 +1148,7 @@ async function loadAdminCodes(){
   el.innerHTML=rows.length?'<div class="hint">Общие коды:</div>'+rows.map(d=>{const v=d.data();return `<div class="codeline"><span><b>${esc(d.id)}</b> · ${fmt(v.amount)} ${ICONS[v.type]||''} · ${v.uses||0}/${v.max}</span><button class="btn danger small" onclick="admDelCode('${esc(d.id)}')">✕</button></div>`}).join(''):'';
  }catch(e){el.innerHTML=''}
 }
-async function admDelCode(k){try{await fsM.deleteDoc(fsM.doc(adm.db,'codes',k));loadAdminCodes()}catch(e){alert('Ошибка: '+(e.code||e.message))}}
+async function admDelCode(k){try{await fsM.deleteDoc(fsM.doc(adm.db,'codes',k));loadAdminCodes()}catch(e){say('Ошибка: '+(e.code||e.message))}}
 
 /* выбор игрока из списка */
 async function openPicker(inputId){
@@ -892,7 +1165,7 @@ function renderPicker(){
 function pickPlayer(pid){const i=$(pickTarget);if(i){i.value=pid;admPreview()}closePicker()}
 
 /* ---------- экспорт обработчиков для onclick ---------- */
-Object.assign(window,{skipSplash,startRegister,backFromRegister,register,openLogin,doLogin,closeAuth,openProtect,doProtect,changePass,openPage,openProfile,closeProfile,openInboxMessage,closeInboxMessage,removeCurrentMessage,copyAndRemoveMessage,useMessageCode,claimDaily,buyPower,clickCore,exchange,setMTab,buyPrime,claimMiner,buyMiner,buyItem,equipItem,morePlayers,buy,redeemPromo,filterPlayers,loadPlayers,pickAvatar,changeNick,signOutAsk,deleteMe,saveCrop,cancelCrop,resetCropPosition,adminLogin,closeAdmin,adminSignIn,adminLogout,admPreviewSoon,openPicker,closePicker,renderPicker,pickPlayer,sendAdminMessage,admGrant,admPrime,admUnprime,admDelete,admGlobalCode,admDelCode});
+Object.assign(window,{skipSplash,startRegister,backFromRegister,register,openLogin,doLogin,closeAuth,openProtect,doProtect,changePass,openPage,openProfile,closeProfile,openInboxMessage,closeInboxMessage,removeCurrentMessage,copyAndRemoveMessage,useMessageCode,claimDaily,buyPower,clickCore,exchange,setMTab,buyPrime,claimMiner,buyMiner,buyItem,equipItem,morePlayers,buy,redeemPromo,filterPlayers,loadPlayers,pickAvatar,changeNick,signOutAsk,deleteMe,saveCrop,cancelCrop,resetCropPosition,battleSearch,cancelSearch,battleTap,setBType,setBAmt,battleAgain,adminLogin,admOtherEmail,dlgClose,buyNickCard,closeAdmin,adminSignIn,adminLogout,admPreviewSoon,openPicker,closePicker,renderPicker,pickPlayer,sendAdminMessage,admGrant,admPrime,admUnprime,admDelete,admGlobalCode,admDelCode});
 boot();
 </script>
 </body>
