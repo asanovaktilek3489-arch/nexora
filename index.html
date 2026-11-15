@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#090b14">
 <title>NEXORA — Game Hub</title>
 <style>
-:root{--bg:#090b14;--line:#293451;--text:#f3f6ff;--muted:#9ba7c2;--cyan:#52e5ff;--violet:#9b7bff;--gold:#ffd166;--green:#55e6a5;--red:#ff7185}
+:root{--bg:#090b14;--line:#293451;--text:#f3f6ff;--muted:#9ba7c2;--cyan:#52e5ff;--violet:#9b7bff;--amber:#ffb84d;--green:#55e6a5;--red:#ff7185}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,#26305b 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#31204d 0,transparent 35%),#080b13;background-attachment:fixed}
 button,input,select{font:inherit}button{cursor:pointer;border:0;color:var(--text);font-weight:700}
@@ -17,7 +17,7 @@ button,input,select{font:inherit}button{cursor:pointer;border:0;color:var(--text
 .sub{text-align:center;color:var(--muted);margin:7px 0 22px}
 .btn{padding:13px 17px;border-radius:16px;background:linear-gradient(100deg,#4bdcf6,#8d73ff);color:#07101c;box-shadow:0 8px 25px #5b8dff33,inset 0 1px #ffffff66;transition:transform .15s}
 .btn.secondary{background:#222c45;color:var(--text);border:1px solid var(--line);box-shadow:none}
-.btn.gold{background:linear-gradient(100deg,#ffd166,#ffae42);color:#291900}
+.btn.warm{background:linear-gradient(100deg,#ffb84d,#ff7a59);color:#2b1100}
 .btn.danger{background:#482331;color:#ff9cac;border:1px solid #713344;box-shadow:none}
 .btn.small{padding:9px 12px;border-radius:12px;font-size:13px}
 .btn:active,.tile:active{transform:scale(.96)}.btn:disabled{opacity:.45}
@@ -65,7 +65,7 @@ input:focus,select:focus{border-color:var(--cyan)}
 .stat-card strong{display:block;font-size:18px;margin:4px 0;overflow-wrap:anywhere}.stat-card small{color:#aab6d0;font-size:10px}
 .product{background:#192238;border:1px solid var(--line);padding:15px;border-radius:15px;margin:10px 0}
 .product-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.price{color:var(--gold);font-weight:900}
+.price{color:var(--amber);font-weight:900}
 .notice{padding:11px 13px;border-radius:12px;background:#1b2a35;border:1px solid #31566a;color:#b9f2ff;margin:12px 0;font-size:13px;line-height:1.45}
 .notice.warn{background:#33291a;border-color:#6d5522;color:#ffe2a0}
 .badgeprime{color:#161020;background:linear-gradient(90deg,#ffe08a,#c6a1ff);padding:3px 7px;border-radius:7px;font-size:10px;font-weight:900;white-space:nowrap}
@@ -75,7 +75,7 @@ input:focus,select:focus{border-color:var(--cyan)}
 .prow.me{border-color:var(--cyan);box-shadow:0 0 0 1px #52e5ff33}
 .rank{width:30px;text-align:center;font-size:18px;font-weight:900;color:var(--muted)}
 .pinfo{flex:1;min-width:0}.pinfo b{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.pinfo small{color:var(--muted);font-weight:500}
-.pscore{font-weight:900;color:var(--gold);font-size:14px;white-space:nowrap}
+.pscore{font-weight:900;color:var(--amber);font-size:14px;white-space:nowrap}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;background:#0b101df2;border-top:1px solid var(--line);backdrop-filter:blur(16px);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
 .tabbar-in{display:flex;width:min(100%,900px);gap:4px}
 .tab{flex:1;background:none;border-radius:14px;padding:7px 2px;color:var(--muted);font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .2s,color .2s}
@@ -113,6 +113,65 @@ input:focus,select:focus{border-color:var(--cyan)}
 .online{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
 @media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h1{font-size:32px}.profile-modal{align-items:center}}
 @media(max-width:420px){.pill{padding:6px 7px;font-size:11px}.brand{font-size:17px;letter-spacing:2px}}
+
+/* ===== v7 ===== */
+.btn{border-radius:14px;box-shadow:0 5px 0 #3a4fb8,0 12px 24px #4a6dff40,inset 0 1px #ffffff80;transition:transform .08s,box-shadow .08s;letter-spacing:.2px}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #3a4fb8,0 3px 8px #4a6dff30,inset 0 1px #ffffff55}
+.btn.secondary{box-shadow:0 4px 0 #0b1020,inset 0 1px #ffffff12}.btn.secondary:active{box-shadow:0 0 0 #0b1020}
+.btn.warm{box-shadow:0 5px 0 #b34a2e,0 12px 24px #ff7a5940,inset 0 1px #ffffff80}.btn.warm:active{box-shadow:0 1px 0 #b34a2e,0 3px 8px #ff7a5930}
+.btn.danger{box-shadow:0 4px 0 #240e18}.btn.danger:active{box-shadow:0 0 0 #240e18}
+.btn:disabled{opacity:.5;transform:none;filter:saturate(.6)}
+.btn.small{box-shadow:0 3px 0 #3a4fb8}.btn.small.warm{box-shadow:0 3px 0 #b34a2e}.btn.small:active{transform:translateY(2px)}
+.tile{box-shadow:0 5px 0 #0a1020,inset 0 1px #ffffff10}.tile:active{transform:translateY(4px);box-shadow:0 1px 0 #0a1020}
+.tile .ico{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:linear-gradient(140deg,#35538a,#1d2d52);box-shadow:inset 0 1px #ffffff33}
+.tile:nth-child(3n+2) .ico{background:linear-gradient(140deg,#6a45b3,#2c2358)}.tile:nth-child(3n) .ico{background:linear-gradient(140deg,#1f8a96,#173a52)}
+.stat-cards{grid-template-columns:repeat(auto-fit,minmax(86px,1fr))}
+.tabbar{left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));padding:5px;border:1px solid #3a4768;border-radius:24px;background:#0d1322ee;box-shadow:0 14px 40px #000a}
+.tab{border-radius:18px;padding:7px 2px 6px}.tab.active{background:linear-gradient(145deg,#27406b,#1b2a4a);box-shadow:inset 0 1px #ffffff1c}
+.admin-dot{bottom:calc(96px + env(safe-area-inset-bottom))}
+.seg{display:flex;gap:5px;background:#0b1120;border:1px solid var(--line);border-radius:16px;padding:4px;margin:12px 0}
+.seg button{flex:1;padding:10px 4px;border-radius:12px;background:none;color:var(--muted);font-size:13px}
+.seg button.on{background:linear-gradient(100deg,#4bdcf6,#8d73ff);color:#07101c;box-shadow:0 3px 0 #3a4fb8}
+.banner{display:block;width:100%;text-align:left;margin-top:12px;padding:14px 16px;border-radius:18px;background:linear-gradient(120deg,#3b2257,#1d2c52);border:1px solid #6a4aa0;box-shadow:0 5px 0 #120d24}
+.banner b{display:block;font-size:15px}.banner small{color:#cdbfe8;font-weight:500}.banner:active{transform:translateY(4px);box-shadow:0 1px 0 #120d24}
+/* PRIME tiers */
+.t-day{--c1:#52e5ff;--c2:#3b8bff;--c3:#b8f1ff;--grad:linear-gradient(90deg,#52e5ff,#3b8bff);--glow:#3bc8ff55}
+.t-week{--c1:#ffb347;--c2:#ff4f9a;--c3:#ffe1a8;--grad:linear-gradient(90deg,#ffb347,#ff4f9a);--glow:#ff6f7a66}
+.t-month{--c1:#3dffc0;--c2:#18b3ff;--c3:#c4ffee;--grad:linear-gradient(90deg,#3dffc0,#18b3ff);--glow:#2fe6c066}
+.t-year{--c1:#b57bff;--c2:#ff5fd2;--c3:#7be3ff;--grad:linear-gradient(90deg,#7be3ff,#b57bff,#ff5fd2,#ffd36b);--glow:#c27bff77}
+.pav{position:relative;display:inline-grid;flex:0 0 auto;border-radius:50%}
+.pav.prime{margin:3px}
+.pav.prime::before{content:"";position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c3),var(--c1));animation:spin 3s linear infinite;box-shadow:0 0 16px var(--glow)}
+.pav.prime>span:first-child{position:relative;z-index:1;border-color:#0b0f1c}
+.pav.prime::after{content:attr(data-ic);position:absolute;top:-11px;right:-7px;font-size:15px;z-index:3;filter:drop-shadow(0 1px 3px #000a)}
+.pav.t-year::before{animation-duration:2s}
+.sp{position:absolute;z-index:3;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px var(--c1);animation:twinkle 1.9s ease-in-out infinite}
+.sp.s1{left:-6px;top:30%}.sp.s2{right:-7px;bottom:22%;animation-delay:.6s}.sp.s3{left:20%;bottom:-6px;animation-delay:1.2s}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.2)}}
+.nm.prime{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3s linear infinite}
+.nm.rb{background:linear-gradient(90deg,#ff5f6d,#ffc371,#7bff9a,#5fd3ff,#b57bff,#ff5f6d);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.tbadge{display:inline-block;padding:3px 8px;border-radius:8px;font-size:10px;font-weight:900;color:#0a0e1a;background:var(--grad);white-space:nowrap;box-shadow:0 0 12px var(--glow)}
+.prow.prime{position:relative;overflow:hidden;border:2px solid transparent;background:linear-gradient(145deg,#1a2540,#101626) padding-box,var(--grad) border-box;box-shadow:0 0 22px var(--glow)}
+.prow.prime::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,#ffffff1f 50%,transparent 60%);transform:translateX(-120%);animation:sweep 3.4s ease-in-out infinite;pointer-events:none}
+@keyframes sweep{60%,100%{transform:translateX(120%)}}
+.prow.prime .pscore{color:var(--c3)}
+.hero.prime{border:2px solid transparent;background:linear-gradient(120deg,#182648,#26194a) padding-box,var(--grad) border-box;box-shadow:0 0 44px var(--glow)}
+.hero.prime::after{color:var(--c1);opacity:.14}
+.profile-sheet.prime{border:2px solid transparent;background:linear-gradient(155deg,#1e2a4a,#0e1322 70%) padding-box,var(--grad) border-box;box-shadow:0 0 70px var(--glow),0 25px 90px #000b}
+.pbanner{margin:-20px -20px 12px;padding:30px 20px 4px;border-radius:26px 26px 0 0;background:radial-gradient(ellipse at 50% 0,var(--glow),transparent 72%)}
+.tname{display:inline-block;font-weight:900;letter-spacing:2px;font-size:15px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:2px}
+.ttl{display:inline-block;margin-top:4px;padding:3px 10px;border-radius:9px;background:#ffffff12;border:1px solid #ffffff1f;font-size:12px}
+.clicker.prime{border-color:var(--c1);box-shadow:0 0 0 10px var(--glow),0 0 70px var(--glow),inset 0 0 35px #ffffff25;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 18px #ffffff00,0 0 90px var(--glow),inset 0 0 35px #ffffff33}}
+.prime-on .float-number{color:#fff}
+.pcard{position:relative;border:2px solid transparent;border-radius:20px;padding:14px;margin:14px 0;background:linear-gradient(145deg,#1a2540,#0f1524) padding-box,var(--grad) border-box;box-shadow:0 0 28px var(--glow)}
+.pcard .ph{display:flex;align-items:center;gap:14px}.pcard h3{margin:0;font-size:18px}
+.pcard ul{margin:10px 0 12px;padding-left:18px;color:#b6c2dc;font-size:13px;line-height:1.65}
+.pcard .pp{font-weight:900;font-size:16px}
+.ownedtag{font-size:11px;color:var(--green);font-weight:800}
+.nowrap{white-space:nowrap}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -124,8 +183,8 @@ input:focus,select:focus{border-color:var(--cyan)}
 <section id="welcome" class="screen hidden"><div class="card"><div class="logo">NEXORA</div><p class="sub">Твоя игра. Твои правила. Твоя вселенная.</p>
 <div class="hero"><h1>Добро пожаловать!</h1><p class="muted">Создай профиль, собирай валюту, соревнуйся с другими игроками и становись легендой NEXORA.</p></div><br>
 <button class="btn full" onclick="startRegister()">Начать игру →</button>
-<button class="btn secondary full" style="margin-top:10px" onclick="googleLogin()">🔐 Я уже играл — войти через Google</button>
-<p class="hint center" style="margin-top:10px">Вход через Google нужен только если ты привязывал аккаунт в профиле.</p></div></section>
+<button class="btn secondary full" style="margin-top:10px" onclick="openLogin()">🔑 Я уже играл — войти по нику и паролю</button>
+<p class="hint center" style="margin-top:10px">Вход по паролю нужен, если ты защитил аккаунт паролем в профиле.</p></div></section>
 
 <section id="register" class="screen hidden"><div class="card"><div class="logo">NEXORA</div><p class="sub">Создание игрового профиля</p>
 <div class="avatar-wrap"><div class="avatar" id="previewAvatar">👤</div></div>
@@ -143,8 +202,8 @@ input:focus,select:focus{border-color:var(--cyan)}
  <header class="topbar"><div class="brand">NEXORA</div>
   <div class="wallet">
    <button class="pill btnlike" onclick="openPage('inbox')" title="Сообщения">✉️<span class="dot hidden" id="inboxDot">0</span></button>
-   <span class="pill">🪙 <b id="coins">0</b></span><span class="pill">💎 <b id="gems">0</b></span><span class="pill">🟡 <b id="gold">0</b></span>
-   <button class="top-profile" onclick="openProfile()" title="Профиль"><span class="mini-avatar sm" id="topAvatar">👤</span></button>
+   <button class="pill btnlike" onclick="openPage('play')">🪙 <b id="coins">0</b></button><button class="pill btnlike" onclick="openPage('market')">💎 <b id="gems">0</b></button>
+   <button class="top-profile" onclick="openProfile()" title="Профиль"><span id="topAvatar"></span></button>
   </div></header>
  <div id="view"></div>
 </main>
@@ -160,6 +219,8 @@ input:focus,select:focus{border-color:var(--cyan)}
 <div class="row" style="margin-top:9px"><button class="btn secondary" onclick="resetCropPosition()">По центру</button><button class="btn secondary" onclick="cancelCrop()">Отмена</button></div>
 <button class="btn full" style="margin-top:9px" onclick="saveCrop()">Сохранить фото</button></div></div>
 
+<div id="authModal" class="modal top hidden"><div class="modalbox" id="authBox"></div></div>
+
 <div id="adminModal" class="modal hidden"><div class="modalbox" id="adminBox"></div></div>
 
 <div id="pickerModal" class="modal top hidden" onclick="if(event.target===this)closePicker()"><div class="modalbox">
@@ -172,7 +233,7 @@ input:focus,select:focus{border-color:var(--cyan)}
  <p class="muted small" id="messageDate"></p>
  <div id="messageText" style="line-height:1.55;white-space:pre-wrap"></div>
  <div id="messageCodeWrap" class="hidden"><div class="hint center">ТВОЙ ПРОМОКОД</div><div class="message-code" id="messageCode"></div></div>
- <button id="useCodeBtn" class="btn gold full" onclick="useMessageCode()">🎁 Активировать сразу</button>
+ <button id="useCodeBtn" class="btn warm full" onclick="useMessageCode()">🎁 Активировать сразу</button>
  <button id="copyMessageCodeBtn" class="btn full" style="margin-top:9px" onclick="copyAndRemoveMessage()">📋 Скопировать промокод</button>
  <button id="dismissMessageBtn" class="btn secondary full" style="margin-top:9px" onclick="removeCurrentMessage()">Понятно</button>
 </div></div>
@@ -186,25 +247,58 @@ const WA='996702198889';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>Number(n||0).toLocaleString('ru-RU');
-const LABELS={coins:'монет',gems:'алмазов',gold:'золота'};
-const ICONS={coins:'🪙',gems:'💎',gold:'🟡'};
+const LABELS={coins:'монет',gems:'алмазов'};
+const ICONS={coins:'🪙',gems:'💎'};
 const ACH=[{at:50000,icon:'✦',name:'50K',title:'Первые 50K'},{at:150000,icon:'⚡',name:'150K',title:'Энергия'},{at:500000,icon:'♛',name:'500K',title:'Коллекционер'},{at:1500000,icon:'☄',name:'1.5M',title:'Легенда'},{at:5000000,icon:'✧',name:'5M',title:'Мифический'}];
-const TABS=[['home','🏠','Главная'],['play','🎮','Играть'],['players','🏆','Игроки'],['shop','🛍️','Магазин'],['me','👤','Профиль']];
+const TABS=[['home','🏠','Главная'],['play','🎮','Играть'],['market','🏪','Рынок'],['players','🏆','Игроки'],['me','👤','Профиль']];
+const TIERS={
+ day:{rank:1,icon:'⚡',name:'PRIME',perks:['Неоновая рамка вокруг аватара','Подсветка строки в списке игроков','Каждый клик ровно +10 🪙']},
+ week:{rank:2,icon:'👑',name:'PRIME ROYAL',perks:['Огненная рамка с короной','Сияющий ник и блик по всей строке','Праздничный профиль','Каждый клик ровно +10 🪙']},
+ month:{rank:3,icon:'💠',name:'PRIME ELITE',perks:['Изумрудная рамка со звёздами','Сияющий ник, строка и профиль','Каждый клик ровно +10 🪙']},
+ year:{rank:4,icon:'🌌',name:'PRIME LEGEND',perks:['Радужная рамка с мерцающими звёздами','Легендарный профиль и сияющий ник','Самая яркая строка в списке игроков','Каждый клик ровно +10 🪙']}};
+const PRIME_PRICES=[{tier:'day',days:1,price:500,label:'1 день'},{tier:'week',days:7,price:5000,label:'1 неделя'},{tier:'year',days:365,price:500000,label:'1 год'}];
+const TIER_BY_DAYS={1:'day',7:'week',30:'month',365:'year'};
+const MINER=[{price:20,rate:300},{price:100,rate:1200},{price:400,rate:4000},{price:1500,rate:14000},{price:5000,rate:50000}];
+const MINER_CAP=8*36e5,MAX_POWER=9;
+const TITLE_LIST=[{id:'hunter',name:'🏹 Охотник',price:30},{id:'star',name:'⭐ Звезда',price:100},{id:'boss',name:'😎 Босс',price:250},{id:'king',name:'👑 Король кликов',price:800},{id:'myth',name:'🔥 Мифик',price:2000}];
+const COLOR_LIST=[{id:'c_cyan',name:'Неоновый голубой',val:'#52e5ff',price:40},{id:'c_pink',name:'Розовый неон',val:'#ff7ac8',price:40},{id:'c_lime',name:'Лайм',val:'#9dff6b',price:40},{id:'c_sun',name:'Солнечный',val:'#ffc24a',price:80},{id:'c_rb',name:'Радуга',val:'rainbow',price:300}];
+const ITEM={};TITLE_LIST.forEach(x=>ITEM[x.id]={...x,k:'title'});COLOR_LIST.forEach(x=>ITEM[x.id]={...x,k:'color'});
 const NICK_RE=/^[\p{L}\p{N}_]+$/u;
 const CODE_RE=/^[A-Z0-9_-]{3,24}$/;
 
 let appM,authM,fsM,app,auth,db;
 let uid=null,me=null,entered=false,page='home',splashDone=false,authReady=false,splashTimer=null;
 let unsubMe=null,unsubInbox=null,inbox=[],inboxFirst=true;
+let lastPK='',topKey='',achInit=false,achSeen={},goldMig=false,mTab='prime',plLimit=100;
 let pendingAvatar='',avatarMode='register';
 let plList=[],plCache={},plTimer=null,plSearchT=null;
 let curMsg=null;
-const pend={coins:0,gems:0,gold:0,clicks:0};let flushT=null;
+const pend={coins:0,gems:0,clicks:0};let flushT=null;
 let crop={img:null,x:0,y:0,scale:1,drag:false,sx:0,sy:0,baseScale:1};
 
 const isPrime=p=>!!(p&&p.primeUntil&&p.primeUntil>Date.now());
-const primeBadge=p=>isPrime(p)?'<span class="badgeprime">✓ PRIME</span>':'';
-const av=(p,c)=>`<span class="${c}">${p&&p.avatar?`<img src="${p.avatar}" alt="">`:'👤'}</span>`;
+function tierOf(p){
+ if(!isPrime(p))return null;
+ if(p.primeTier&&TIERS[p.primeTier])return p.primeTier;
+ const d=(p.primeUntil-Date.now())/864e5;
+ return d>200?'year':d>20?'month':d>3?'week':'day';
+}
+const rankOf=t=>t&&TIERS[t]?TIERS[t].rank:0;
+const primeBadge=(p,ft)=>{const t=ft||tierOf(p);return t?`<span class="tbadge t-${t}">${TIERS[t].icon} ${TIERS[t].name}</span>`:''};
+function av(p,c,ft){
+ const t=ft||tierOf(p),img=p&&p.avatar&&/^data:image\//.test(p.avatar)?`<img src="${esc(p.avatar)}" alt="">`:'👤';
+ if(!t)return `<span class="pav"><span class="${c}">${img}</span></span>`;
+ return `<span class="pav prime t-${t}" data-ic="${TIERS[t].icon}"><span class="${c}">${img}</span>${t==='month'||t==='year'?'<i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i>':''}</span>`;
+}
+function nameHtml(p){
+ const t=tierOf(p),c=p&&p.nameColor;let cls='nm',st='';
+ if(c==='rainbow')cls+=' rb';else if(c&&/^#[0-9a-f]{6}$/i.test(c))st=` style="color:${c}"`;else if(t)cls+=' prime';
+ return `<span class="${cls}"${st}>${esc(p&&p.name)}</span>`;
+}
+function titleOf(p){const it=ITEM[p&&p.title];return it&&it.k==='title'?it.name:''}
+const tcls=p=>{const t=tierOf(p);return t?'t-'+t:''};
+const clickVal=()=>isPrime(me)?10:(me.power||1);
+function minerAcc(){const lv=me.minerLevel||0;if(!lv||!me.minerAt||!MINER[lv-1])return 0;return Math.floor(MINER[lv-1].rate*Math.max(0,Math.min(Date.now()-me.minerAt,MINER_CAP))/36e5)}
 const medal=i=>['🥇','🥈','🥉'][i]||('#'+(i+1));
 const ld=o=>new Date(Date.now()+o*864e5).toLocaleDateString('en-CA');
 
@@ -226,13 +320,13 @@ async function boot(){
 }
 async function onUser(user){
  if(unsubMe)unsubMe();if(unsubInbox)unsubInbox();unsubMe=unsubInbox=null;
- me=null;inbox=[];inboxFirst=true;authReady=false;entered=false;
+ me=null;inbox=[];inboxFirst=true;authReady=false;entered=false;lastPK='';topKey='';achInit=false;achSeen={};goldMig=false;
  if(!user){try{await authM.signInAnonymously(auth)}catch(e){fatal('Не удалось войти: '+(e.code||e.message)+'. Проверь, что в Firebase включён Anonymous.')}return}
  uid=user.uid;
  let first=true;
  unsubMe=fsM.onSnapshot(fsM.doc(db,'players',uid),snap=>{
   const had=!!me;
-  if(snap.exists()){me={...snap.data()};for(const k in pend)me[k]=(me[k]||0)+pend[k]}else me=null;
+  if(snap.exists()){me={...snap.data()};for(const k in pend)me[k]=(me[k]||0)+pend[k];if(me.gold>0&&!goldMig){goldMig=true;migrateGold()}}else me=null;
   if(first||had!==!!me){first=false;authReady=true;route()}else updateUI();
  },err=>fatal('Ошибка базы данных: '+(err.code||err.message)));
  unsubInbox=fsM.onSnapshot(fsM.collection(db,'players',uid,'inbox'),s=>{
@@ -258,7 +352,7 @@ async function register(){
  try{
   const b=fsM.writeBatch(db);
   b.set(fsM.doc(db,'nicks',low),{uid});
-  b.set(fsM.doc(db,'players',uid),{pid,name:n,nameLower:low,avatar:pendingAvatar,coins:0,gems:0,gold:0,clicks:0,power:1,primeUntil:0,daily:{last:'',streak:0},created:Date.now()});
+  b.set(fsM.doc(db,'players',uid),{pid,name:n,nameLower:low,avatar:pendingAvatar,coins:0,gems:0,clicks:0,power:1,primeUntil:0,primeTier:'',title:'',nameColor:'',owned:[],minerLevel:0,minerAt:0,daily:{last:'',streak:0},created:Date.now()});
   await b.commit();
   toast('Добро пожаловать!','Профиль создан. Забери ежедневный бонус на главной','🎉');
  }catch(e){
@@ -286,81 +380,116 @@ addEventListener('pagehide',()=>flush());
 document.addEventListener('visibilitychange',()=>{if(document.hidden)flush()});
 
 /* ---------- интерфейс ---------- */
+function migrateGold(){
+ const g=Math.floor(me.gold||0);if(g<=0)return;
+ add('gems',Math.floor(g/10));add('coins',(g%10)*100);me.gold=0;flush({gold:0});
+ toast('Золото убрано','Оно обменено на алмазы и монеты','💎');
+}
 function updateUI(){
  if(!me)return;
- $('coins').textContent=fmt(me.coins);$('gems').textContent=fmt(me.gems);$('gold').textContent=fmt(me.gold);
+ $('coins').textContent=fmt(me.coins);$('gems').textContent=fmt(me.gems);
+ const pk=tierOf(me)||'';
+ if(pk!==lastPK){lastPK=pk;if(entered){render();return}}
  const d=$('inboxDot');d.textContent=inbox.length;d.classList.toggle('hidden',!inbox.length);
- $('topAvatar').innerHTML=me.avatar?`<img src="${me.avatar}" alt="">`:'👤';
- [['playCoins',me.coins],['playGems',me.gems],['playGold',me.gold],['clickCount',me.clicks]].forEach(([id,v])=>{const e=$(id);if(e)e.textContent=fmt(v)});
+ const tk=(me.avatar||'')+'|'+pk;if(tk!==topKey){topKey=tk;$('topAvatar').innerHTML=av(me,'mini-avatar sm')}
+ [['playCoins',fmt(me.coins)],['playGems',fmt(me.gems)],['clickCount',fmt(me.clicks)],['clickVal','+'+clickVal()+' 🪙 за нажатие'+(isPrime(me)?' · PRIME':'')],['minerAcc',fmt(minerAcc())],['mGems',fmt(me.gems)]].forEach(([id,v])=>{const e=$(id);if(e)e.textContent=v});
  const hs=$('heroStatus');if(hs)hs.innerHTML=heroStatus();
  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.p===page));
- ACH.forEach(a=>{if(me.coins>=a.at&&!(window.__ach||(window.__ach={}))[a.name]){window.__ach[a.name]=1;if(me.coins-(me.power||1)<a.at&&me.coins>=a.at&&me.clicks>0)toast('Достижение открыто!',`Символ «${a.title}»`,'🏆')}});
+ if(!achInit){ACH.forEach(a=>{if(me.coins>=a.at)achSeen[a.name]=1});achInit=true}
+ else ACH.forEach(a=>{if(me.coins>=a.at&&!achSeen[a.name]){achSeen[a.name]=1;toast('Достижение открыто!',`Символ «${a.title}»`,'🏆')}});
 }
-const heroStatus=()=>`${isPrime(me)?`<span class="badgeprime">✓ PRIME</span> до ${new Date(me.primeUntil).toLocaleDateString('ru-RU')}`:'Обычный аккаунт'}`;
+setInterval(()=>{if(me&&entered&&!document.hidden)updateUI()},5000);
+const heroStatus=()=>{const t=tierOf(me);return t?`${primeBadge(me)} до ${new Date(me.primeUntil).toLocaleDateString('ru-RU')}`:'Обычный аккаунт'};
 function head(t,back){return `<div class="pagehead">${back?`<button class="back" onclick="openPage('home')">←</button>`:''}<h2>${t}</h2></div>`}
-function openPage(p){page=p;clearInterval(plTimer);render();scrollTo(0,0);if(p==='players')plTimer=setInterval(()=>{if(page==='players'&&!document.hidden&&!$('psearch').value)loadPlayers()},30000)}
+function openPage(p){page=p;if(p==='players')plLimit=100;clearInterval(plTimer);render();scrollTo(0,0);if(p==='players')plTimer=setInterval(()=>{if(page==='players'&&!document.hidden&&!$('psearch').value)loadPlayers()},30000)}
 function render(){if(!me)return;$('view').innerHTML=(pages[page]||pages.home)();updateUI();if(page==='home')loadRank();if(page==='players')loadPlayers()}
 
 const upgradeCost=()=>(me.power||1)*(me.power||1)*200;
+const wallet2=()=>`<div class="stat-cards" style="grid-template-columns:repeat(2,1fr)"><div class="stat-card"><span>🪙</span><strong id="playCoins">${fmt(me.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card"><span>💎</span><strong id="playGems">${fmt(me.gems)}</strong><small>АЛМАЗЫ</small></div></div>`;
 const pages={
 home(){
- const d=me.daily||{last:'',streak:0},can=d.last!==ld(0),unread=inbox.length;
- return `<div class="hero"><div class="profileline">${av(me,'mini-avatar lg')}<div><div class="muted small">ТВОЙ ПРОФИЛЬ</div><h1>${esc(me.name)}</h1><div class="muted small"><span id="heroStatus">${heroStatus()}</span> · 🏆 место <b id="rankVal">…</b></div></div></div></div>
- <div class="daily"><div><b>🎁 Ежедневный бонус</b><small>${can?'Забери награду за сегодня!':`Серия: ${d.streak} дн. Приходи завтра`}</small></div><button class="btn gold small" ${can?'':'disabled'} onclick="claimDaily()">${can?'Забрать':'Получено'}</button></div>
+ const d=me.daily||{last:'',streak:0},can=d.last!==ld(0),unread=inbox.length,t=tierOf(me);
+ return `<div class="hero ${tcls(me)} ${t?'prime':''}"><div class="profileline">${av(me,'mini-avatar lg')}<div><div class="muted small">ТВОЙ ПРОФИЛЬ</div><h1>${nameHtml(me)}</h1>${titleOf(me)?`<div class="ttl">${titleOf(me)}</div>`:''}<div class="muted small" style="margin-top:4px"><span id="heroStatus">${heroStatus()}</span> · 🏆 место <b id="rankVal">…</b></div></div></div></div>
+ ${t?'':`<button class="banner" onclick="openPage('market')"><b>👑 Получи PRIME</b><small>Особый профиль и ровно +10 🪙 за каждый клик · от 500 💎</small></button>`}
+ <div class="daily"><div><b>🎁 Ежедневный бонус</b><small>${can?'Забери награду за сегодня!':`Серия: ${d.streak} дн. Приходи завтра`}</small></div><button class="btn warm small" ${can?'':'disabled'} onclick="claimDaily()">${can?'Забрать':'Получено'}</button></div>
  <h3 class="section-title">Главное меню</h3><div class="grid">
  <button class="tile" onclick="openPage('play')"><span class="ico">🎮</span><b>Играть</b><small>Кликер и улучшения</small></button>
+ <button class="tile" onclick="openPage('market')"><span class="ico">🏪</span><b>Рынок</b><small>PRIME, майнер, стиль</small></button>
  <button class="tile" onclick="openPage('players')"><span class="ico">🏆</span><b>Игроки</b><small>Рейтинг и список</small></button>
  <button class="tile" onclick="openPage('inbox')"><span class="ico">✉️</span><b>Сообщения</b><small>${unread?unread+' новых':'Писем нет'}</small></button>
  <button class="tile" onclick="openPage('promo')"><span class="ico">🎟️</span><b>Промокоды</b><small>Активировать код</small></button>
- <button class="tile" onclick="openPage('shop')"><span class="ico">🛍️</span><b>Магазин</b><small>Товары и PRIME</small></button>
- <button class="tile" onclick="openPage('exchange')"><span class="ico">🔄</span><b>Обмен валют</b><small>Монеты → золото → алмазы</small></button>
- <button class="tile" onclick="openPage('creator')"><span class="ico">🤝</span><b>Код автора</b><small>Поддержать автора</small></button>
+ <button class="tile" onclick="openPage('exchange')"><span class="ico">🔄</span><b>Обмен</b><small>Монеты → алмазы</small></button>
+ <button class="tile" onclick="openPage('shop')"><span class="ico">🛍️</span><b>Магазин</b><small>За реальные деньги</small></button>
  <button class="tile" onclick="openPage('me')"><span class="ico">👤</span><b>Мой профиль</b><small>Данные и настройки</small></button>
  </div><div class="notice">✨ Заходи каждый день: серия дней увеличивает бонус.</div>`},
 play(){
+ const mx=(me.power||1)>=MAX_POWER;
  return `<div class="page">${head('Игровая зона')}<div class="center"><p class="muted">Нажимай на ядро и собирай монеты.</p>
- <div class="stat-cards"><div class="stat-card"><span>🪙</span><strong id="playCoins">${fmt(me.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card"><span>💎</span><strong id="playGems">${fmt(me.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card"><span>🟡</span><strong id="playGold">${fmt(me.gold)}</strong><small>ЗОЛОТО</small></div></div>
- <div class="clicker" id="clickCore" onpointerdown="clickCore(event)">✦</div>
- <h2>+${me.power||1} 🪙 за нажатие</h2><p class="muted">Всего нажатий: <b id="clickCount">${fmt(me.clicks)}</b></p>
- <div class="product"><div class="product-head"><b>⚡ Сила клика ур. ${me.power||1}</b><span class="price">${fmt(upgradeCost())} 🪙</span></div><p class="hint">Каждый уровень даёт +1 монету за нажатие.</p><button class="btn full" onclick="buyPower()">Улучшить</button></div></div></div>`},
+ ${wallet2()}
+ <div class="clicker ${isPrime(me)?'prime '+tcls(me):''}" id="clickCore" onpointerdown="clickCore(event)">${isPrime(me)?TIERS[tierOf(me)].icon:'✦'}</div>
+ <h2 id="clickVal">+${clickVal()} 🪙 за нажатие${isPrime(me)?' · PRIME':''}</h2><p class="muted">Всего нажатий: <b id="clickCount">${fmt(me.clicks)}</b></p>
+ <button class="btn warm full" onclick="openPage('market')">🏪 Рынок: PRIME, майнер, стиль</button>
+ <div class="product" style="text-align:left"><div class="product-head"><b>⚡ Сила клика ур. ${me.power||1}</b><span class="price">${mx?'МАКС':fmt(upgradeCost())+' 🪙'}</span></div><p class="hint">${isPrime(me)?'Сейчас у тебя PRIME: каждый клик ровно +10. Уровни сохраняются на случай, если PRIME закончится.':`Каждый уровень даёт +1 монету за нажатие (максимум ${MAX_POWER}). PRIME даёт +10.`}</p><button class="btn full" ${mx?'disabled':''} onclick="buyPower()">${mx?'Максимальный уровень':'Улучшить'}</button></div></div></div>`},
+market(){
+ const lv=me.minerLevel||0,cur=MINER[lv-1],nx=MINER[lv],t=tierOf(me);
+ let body='';
+ if(mTab==='prime'){
+  body=(t?`<div class="pcard ${tcls(me)}"><div class="ph">${av(me,'mini-avatar lg')}<div><div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div><div class="hint">Активен до ${new Date(me.primeUntil).toLocaleString('ru-RU')}</div><div class="hint">Клик: ровно +10 🪙</div></div></div></div>`:'<div class="notice">👑 С PRIME каждый клик даёт ровно <b>+10 🪙</b>, а профиль выглядит по-особенному. Чем дольше PRIME, тем ярче эффект.</div>')+
+  PRIME_PRICES.map((o,i)=>{const T=TIERS[o.tier];return `<div class="pcard t-${o.tier}"><div class="ph">${av(me,'mini-avatar lg',o.tier)}<div style="flex:1"><h3>${T.icon} ${T.name}</h3><div class="muted small">${o.label}</div></div><div class="pp nowrap">${fmt(o.price)} 💎</div></div><ul>${T.perks.map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn ${o.tier==='year'?'warm':''} full" onclick="buyPrime(${i})">Купить за ${fmt(o.price)} 💎</button></div>`}).join('')+
+  `<p class="hint">Повторная покупка продлевает срок. Если у тебя уже есть более высокий PRIME, он сохранится. Не хватает 💎? Обменяй монеты.</p><button class="btn secondary full" onclick="openPage('exchange')">🔄 Обменять монеты на алмазы</button>`;
+ }else if(mTab==='miner'){
+  body=`<div class="product"><div class="product-head"><b>⛏️ Майнер ${lv?'ур. '+lv:'(не куплен)'}</b><span class="price">${cur?fmt(cur.rate)+' 🪙/час':'—'}</span></div><p class="hint">Добывает монеты сам, даже когда тебя нет в игре. Копит до 8 часов, потом нужно забрать.</p>
+  ${lv?`<div class="stat-cards" style="grid-template-columns:1fr"><div class="stat-card"><span>Накоплено</span><strong id="minerAcc">${fmt(minerAcc())}</strong><small>🪙</small></div></div><button class="btn full" onclick="claimMiner()">⛏️ Забрать монеты</button>`:''}
+  ${nx?`<button class="btn warm full" style="margin-top:12px" onclick="buyMiner()">${lv?'Улучшить':'Купить'} до ур. ${lv+1} · ${fmt(nx.price)} 💎</button><p class="hint">Даст ${fmt(nx.rate)} 🪙 в час.</p>`:'<div class="notice" style="margin-top:12px">Максимальный уровень майнера!</div>'}</div>`;
+ }else{
+  const own=x=>(me.owned||[]).includes(x.id),eq=x=>x.k==='title'?me.title===x.id:me.nameColor===x.val;
+  const row=x=>`<div class="product"><div class="product-head"><b>${x.k==='title'?esc(x.name):`<span class="nm${x.val==='rainbow'?' rb':''}" ${x.val==='rainbow'?'':`style="color:${x.val}"`}>${esc(x.name)}</span>`}</b>${own(x)?`<button class="btn secondary small" onclick="equipItem('${x.id}')">${eq(x)?'Снять':'Надеть'}</button>`:`<button class="btn small" onclick="buyItem('${x.id}')">${fmt(x.price)} 💎</button>`}</div></div>`;
+  body=`<div class="notice center" style="font-size:16px">Так тебя видят другие:<br><b>${nameHtml(me)}</b>${titleOf(me)?`<br><span class="ttl">${titleOf(me)}</span>`:''}</div>
+  <h3 class="section-title">Титулы</h3>${TITLE_LIST.map(x=>row({...x,k:'title'})).join('')}
+  <h3 class="section-title">Цвет ника</h3>${COLOR_LIST.map(x=>row({...x,k:'color'})).join('')}`;
+ }
+ return `<div class="page">${head('Рынок')}<div class="stat-cards" style="grid-template-columns:1fr"><div class="stat-card"><span>Твои алмазы</span><strong id="mGems">${fmt(me.gems)}</strong><small>💎</small></div></div>
+ <div class="seg"><button class="${mTab==='prime'?'on':''}" onclick="setMTab('prime')">👑 PRIME</button><button class="${mTab==='miner'?'on':''}" onclick="setMTab('miner')">⛏️ Майнер</button><button class="${mTab==='style'?'on':''}" onclick="setMTab('style')">🎨 Стиль</button></div>${body}</div>`},
 players(){
  return `<div class="page">${head('Список игроков')}<div class="notice">🌍 Это все игроки NEXORA. Рейтинг по монетам, обновляется сам.</div>
  <div class="row"><input id="psearch" placeholder="🔍 Поиск по нику или ID" oninput="filterPlayers()" autocomplete="off" style="flex:3"><button class="btn secondary" style="flex:1" onclick="loadPlayers()">🔄</button></div>
  <div id="plist" style="margin-top:6px"><div class="notice">Загрузка…</div></div></div>`},
 shop(){
- return `<div class="page">${head('Магазин NEXORA')}<p class="muted">Выбери товар — WhatsApp откроется с готовым сообщением.</p>
+ return `<div class="page">${head('Магазин NEXORA',1)}<p class="muted">Покупки за реальные деньги. Выбери товар: WhatsApp откроется с готовым сообщением. PRIME за алмазы можно купить в Рынке.</p>
  <div class="product"><div class="product-head"><b>🎟️ Промокод</b><span class="price">от 5 сом</span></div><p class="hint">Случайная награда: игровая валюта или бонус.</p><button class="btn full" onclick="buy('Промокод','от 5 сом')">Купить через WhatsApp</button></div>
- <div class="product"><div class="product-head"><b>🤝 Код автора</b><span class="price">от 5 сом</span></div><p class="hint">Поддержи проект и получи персональный код автора.</p><button class="btn full" onclick="buy('Код автора','от 5 сом')">Купить через WhatsApp</button></div>
- ${[['1 день',3],['7 дней',10],['30 дней',30],['1 год',100]].map(a=>`<div class="product"><div class="product-head"><b>👑 PRIME — ${a[0]}</b><span class="price">${a[1]} сом</span></div><p class="hint">Метка PRIME в профиле и в списке игроков после подтверждения покупки.</p><button class="btn gold full" onclick="buy('PRIME на ${a[0]}','${a[1]} сом')">Купить через WhatsApp</button></div>`).join('')}
+ ${[['1 день',3],['7 дней',10],['30 дней',30],['1 год',100]].map(a=>`<div class="product"><div class="product-head"><b>👑 PRIME — ${a[0]}</b><span class="price">${a[1]} сом</span></div><p class="hint">Выдаётся после подтверждения покупки. Чем дольше срок, тем ярче оформление профиля.</p><button class="btn warm full" onclick="buy('PRIME на ${a[0]}','${a[1]} сом')">Купить через WhatsApp</button></div>`).join('')}
  <div class="notice warn">Оплата и выдача товара согласуются вручную в WhatsApp. Не отправляй данные банковской карты или пароли.</div></div>`},
 me(){
- const u=auth.currentUser,linked=u&&!u.isAnonymous;
- return `<div class="page">${head('Мой профиль')}<div class="center"><div class="avatar-wrap"><div class="avatar">${me.avatar?`<img src="${me.avatar}" alt="">`:'👤'}</div></div>
- <h2>${esc(me.name)} ${primeBadge(me)}</h2><p class="muted">ID: <b>${esc(me.pid)}</b></p>
- <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(me.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(me.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">🟡<strong>${fmt(me.gold)}</strong><small>ЗОЛОТО</small></div></div></div>
+ const u=auth.currentUser,linked=hasPw(u),t=tierOf(me);
+ return `<div class="page">${head('Мой профиль')}<div class="center ${tcls(me)}"><div class="avatar-wrap">${av(me,'avatar')}</div>
+ <h2>${nameHtml(me)}</h2>${t?`<div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div>`:''}${titleOf(me)?`<div><span class="ttl">${titleOf(me)}</span></div>`:''}<p class="muted">ID: <b>${esc(me.pid)}</b></p>
+ <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(me.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(me.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">👆<strong>${fmt(me.clicks)}</strong><small>НАЖАТИЙ</small></div></div></div>
  <div class="row"><button class="btn secondary" onclick="pickAvatar('profile')">📷 Сменить фото</button><button class="btn secondary" onclick="changeNick()">✏️ Сменить ник</button></div>
  <h3 class="section-title">🔐 Сохранность аккаунта</h3>
- ${linked?`<div class="notice">✓ Привязан Google: <b>${esc(u.email||'')}</b>. Аккаунт можно восстановить на любом устройстве.</div>`:`<div class="notice warn">Аккаунт сейчас привязан только к этому браузеру. Если очистишь данные или сменишь телефон, прогресс потеряется. Привяжи Google.</div><button class="btn full" onclick="linkGoogle()">Привязать Google</button>`}
+ ${linked?`<div class="notice">✓ Аккаунт защищён паролем. Входи по нику <b>${esc(me.name)}</b> и паролю с любого устройства.</div><button class="btn secondary full" onclick="changePass()">Сменить пароль</button>`:`<div class="notice warn">Аккаунт сейчас привязан только к этому устройству. Если удалишь приложение или сменишь телефон, прогресс потеряется. Задай пароль.</div><button class="btn full" onclick="openProtect()">Защитить паролем</button>`}
  <button class="btn secondary full" style="margin-top:10px" onclick="signOutAsk()">Выйти из аккаунта</button>
  <button class="btn danger full" style="margin-top:10px" onclick="deleteMe()">Удалить этот профиль</button></div>`},
 promo(){return `<div class="page">${head('Промокоды',1)}<p class="muted">Введи код, который получил от администратора.</p><label>Промокод</label><input id="promoInput" maxlength="24" placeholder="Например: NEXO26" autocomplete="off"><button class="btn full" style="margin-top:12px" onclick="redeemPromo()">Активировать</button><p class="hint">Каждый код можно активировать один раз.</p></div>`},
 inbox(){return `<div class="page">${head('Входящие сообщения',1)}${renderInbox()}</div>`},
-creator(){return `<div class="page">${head('Код автора',1)}<p class="muted">Введи код автора, если он у тебя есть.</p><label>Код автора</label><input id="creatorInput" placeholder="Например: NEXORA" autocomplete="off"><button class="btn full" style="margin-top:12px" onclick="applyCreator()">Применить код</button><div class="notice">Купить код автора можно в магазине.</div></div>`},
-exchange(){return `<div class="page">${head('Обмен валют',1)}<p class="muted">Обменивай игровую валюту по фиксированным курсам.</p>
- <div class="product"><b>🪙 100 монет → 🟡 1 золото</b><div class="row" style="margin-top:10px"><button class="btn" onclick="exchange('gold',1)">×1</button><button class="btn" onclick="exchange('gold',10)">×10</button><button class="btn" onclick="exchange('gold','max')">Макс</button></div></div>
- <div class="product"><b>🟡 10 золота → 💎 1 алмаз</b><div class="row" style="margin-top:10px"><button class="btn" onclick="exchange('gem',1)">×1</button><button class="btn" onclick="exchange('gem',10)">×10</button><button class="btn" onclick="exchange('gem','max')">Макс</button></div></div>
- <p class="hint">Курсы могут быть изменены владельцем проекта.</p></div>`}
+exchange(){return `<div class="page">${head('Обмен валют',1)}<p class="muted">Меняй монеты на алмазы по фиксированному курсу.</p>
+ <div class="product"><b>🪙 100 монет → 💎 1 алмаз</b><p class="hint">Сейчас: ${fmt(me.coins)} 🪙 · ${fmt(me.gems)} 💎</p><div class="row" style="margin-top:10px"><button class="btn" onclick="exchange(1)">×1</button><button class="btn" onclick="exchange(10)">×10</button><button class="btn" onclick="exchange('max')">Макс</button></div></div>
+ <button class="btn warm full" onclick="openPage('market')">🏪 Потратить алмазы в Рынке</button></div>`}
 };
 
 /* ---------- игра ---------- */
 function clickCore(ev){
- if(!me)return;const p=me.power||1;add('coins',p);add('clicks',1);updateUI();
+ if(!me)return;const p=clickVal();add('coins',p);add('clicks',1);updateUI();
  const b=$('clickCore');
  if(b){const r=b.getBoundingClientRect(),f=document.createElement('div');f.className='float-number';f.textContent='+'+p+' 🪙';
+  if(isPrime(me)){f.style.color='#fff';f.style.textShadow='0 0 16px '+getComputedStyle(b).getPropertyValue('--c1')}
   const x=ev&&ev.clientX?ev.clientX:r.left+r.width/2,y=ev&&ev.clientY?ev.clientY:r.top+30;
   f.style.left=(x-25+(Math.random()*30-15))+'px';f.style.top=(y-30)+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),900)}
 }
-function buyPower(){const c=upgradeCost();if(me.coins<c)return toast('Не хватает монет',`Нужно ${fmt(c)} 🪙`,'⚠️');add('coins',-c);me.power=(me.power||1)+1;flush({power:me.power});render();toast('Улучшено!',`Теперь +${me.power} 🪙 за нажатие`,'⚡')}
+function buyPower(){
+ if((me.power||1)>=MAX_POWER)return;
+ const c=upgradeCost();if(me.coins<c)return toast('Не хватает монет',`Нужно ${fmt(c)} 🪙`,'⚠️');
+ add('coins',-c);me.power=(me.power||1)+1;flush({power:me.power});render();toast('Улучшено!',isPrime(me)?`Уровень ${me.power} (с PRIME клик всё равно +10)`:`Теперь +${me.power} 🪙 за нажатие`,'⚡')
+}
 async function claimDaily(){
  const d=me.daily||{last:'',streak:0},today=ld(0);if(d.last===today)return;
  const streak=d.last===ld(-1)?(d.streak||0)+1:1,s=Math.min(streak,7),coins=100+(s-1)*50,gem=streak%7===0?1:0;
@@ -368,12 +497,42 @@ async function claimDaily(){
  render();toast('Бонус получен!',`+${coins} 🪙${gem?' и 💎 1 алмаз':''} · серия ${streak} дн.`,'🎁');
  await flush({daily:{last:today,streak}});
 }
-function exchange(t,m){
- if(t==='gold'){const n=m==='max'?Math.floor(me.coins/100):m;if(n<1||me.coins<100*n)return toast('Недостаточно монет','Нужно больше 🪙','⚠️');add('coins',-100*n);add('gold',n)}
- else{const n=m==='max'?Math.floor(me.gold/10):m;if(n<1||me.gold<10*n)return toast('Недостаточно золота','Нужно больше 🟡','⚠️');add('gold',-10*n);add('gems',n)}
- flush();render();toast('Обмен выполнен','Баланс обновлён','🔄');
+function exchange(m){
+ const n=m==='max'?Math.floor(me.coins/100):m;
+ if(n<1||me.coins<100*n)return toast('Недостаточно монет','Нужно больше 🪙','⚠️');
+ add('coins',-100*n);add('gems',n);flush();render();toast('Обмен выполнен',`+${fmt(n)} 💎`,'🔄');
 }
-function applyCreator(){const c=$('creatorInput').value.trim();if(!c)return toast('Введи код','Поле пустое','⚠️');toast('Скоро','Коды автора появятся в следующем обновлении','🤝')}
+function setMTab(t){mTab=t;render()}
+function buyPrime(i){
+ const o=PRIME_PRICES[i];if(!o)return;
+ if(me.gems<o.price)return toast('Не хватает алмазов',`Нужно ${fmt(o.price)} 💎, у тебя ${fmt(me.gems)}`,'⚠️');
+ if(!confirm(`Купить ${TIERS[o.tier].name} (${o.label}) за ${fmt(o.price)} 💎?`))return;
+ const cur=tierOf(me),tier=rankOf(cur)>=rankOf(o.tier)?cur:o.tier,until=Math.max(Date.now(),me.primeUntil||0)+o.days*864e5;
+ add('gems',-o.price);me.primeUntil=until;me.primeTier=tier;flush({primeUntil:until,primeTier:tier});
+ render();toast(TIERS[tier].name+' активен!','Каждый клик теперь ровно +10 🪙',TIERS[tier].icon);
+}
+function claimMiner(){
+ const a=minerAcc();if(a<1)return toast('Пока пусто','Майнер ещё копит монеты','⛏️');
+ add('coins',a);me.minerAt=Date.now();flush({minerAt:me.minerAt});render();toast('Майнер',`+${fmt(a)} 🪙`,'⛏️');
+}
+function buyMiner(){
+ const lv=me.minerLevel||0,nx=MINER[lv];if(!nx)return;
+ if(me.gems<nx.price)return toast('Не хватает алмазов',`Нужно ${fmt(nx.price)} 💎`,'⚠️');
+ const a=lv?minerAcc():0;if(a>0)add('coins',a);
+ add('gems',-nx.price);me.minerLevel=lv+1;me.minerAt=Date.now();flush({minerLevel:me.minerLevel,minerAt:me.minerAt});
+ render();toast('Майнер улучшен',`Ур. ${me.minerLevel}: ${fmt(nx.rate)} 🪙 в час`,'⛏️');
+}
+function buyItem(id){
+ const it=ITEM[id];if(!it||(me.owned||[]).includes(id))return;
+ if(me.gems<it.price)return toast('Не хватает алмазов',`Нужно ${fmt(it.price)} 💎`,'⚠️');
+ add('gems',-it.price);me.owned=[...(me.owned||[]),id];flush({owned:fsM.arrayUnion(id)});render();toast('Куплено',it.name,'🎨');
+}
+function equipItem(id){
+ const it=ITEM[id];if(!it||!(me.owned||[]).includes(id))return;
+ if(it.k==='title'){me.title=me.title===id?'':id;flush({title:me.title})}
+ else{me.nameColor=me.nameColor===it.val?'':it.val;flush({nameColor:me.nameColor})}
+ render();
+}
 function buy(item,price){const msg=`Здравствуйте! Хочу приобрести в NEXORA: ${item}. Цена: ${price}. Мой ник: ${me?.name||'не указан'}, ID: ${me?.pid||'не указан'}. Подскажите, пожалуйста, как оплатить и получить товар.`;window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank')}
 
 /* ---------- игроки ---------- */
@@ -386,7 +545,7 @@ async function loadRank(){
 }
 async function loadPlayers(){
  try{
-  const s=await fsM.getDocs(fsM.query(fsM.collection(db,'players'),fsM.orderBy('coins','desc'),fsM.limit(100)));
+  const s=await fsM.getDocs(fsM.query(fsM.collection(db,'players'),fsM.orderBy('coins','desc'),fsM.limit(plLimit)));
   plList=s.docs.map(d=>({uid:d.id,...d.data()}));plList.forEach(p=>plCache[p.uid]=p);
   const q=$('psearch');if(!q||!q.value)renderPlayers(plList,true);
  }catch(e){const l=$('plist');if(l)l.innerHTML='<div class="notice warn">Не удалось загрузить список. Проверь интернет.</div>'}
@@ -394,8 +553,9 @@ async function loadPlayers(){
 function renderPlayers(list,ranked){
  const l=$('plist');if(!l)return;
  if(!list.length){l.innerHTML='<div class="notice">Никого не найдено.</div>';return}
- l.innerHTML=list.map((p,i)=>`<button class="prow ${p.uid===uid?'me':''}" onclick="openProfile('${p.uid}')"><span class="rank">${ranked?medal(i):'•'}</span>${av(p,'mini-avatar')}<span class="pinfo"><b>${esc(p.name)} ${primeBadge(p)}${p.uid===uid?'<span class="muted small">(ты)</span>':''}</b><small>ID: ${esc(p.pid)}</small></span><span class="pscore">🪙 ${fmt(p.coins)}</span></button>`).join('');
+ l.innerHTML=list.map((p,i)=>{const t=tierOf(p);return `<button class="prow ${t?'prime t-'+t:''} ${p.uid===uid?'me':''}" onclick="openProfile('${esc(p.uid)}')"><span class="rank">${ranked?medal(i):'•'}</span>${av(p,'mini-avatar')}<span class="pinfo"><b>${nameHtml(p)} ${primeBadge(p)}${p.uid===uid?'<span class="muted small">(ты)</span>':''}</b><small>ID: ${esc(p.pid)}${titleOf(p)?' · '+titleOf(p):''}</small></span><span class="pscore">🪙 ${fmt(p.coins)}</span></button>`}).join('')+(ranked&&plList.length>=plLimit&&plLimit<500?'<button class="btn secondary full" style="margin-top:10px" onclick="morePlayers()">Показать ещё</button>':'');
 }
+function morePlayers(){plLimit=Math.min(500,plLimit+100);loadPlayers()}
 function filterPlayers(){
  const q=$('psearch').value.trim();clearTimeout(plSearchT);
  if(!q){renderPlayers(plList,true);return}
@@ -414,13 +574,15 @@ function filterPlayers(){
 }
 function openProfile(id){
  const p=id?(id===uid?me&&{...me,uid}:plCache[id]):me;if(!p)return;
- const next=ACH.find(a=>p.coins<a.at);
- $('profileSheet').innerHTML=`<div style="width:42px;height:5px;border-radius:9px;background:#65718b;margin:0 auto 18px"></div>
- <div class="center"><div class="avatar-wrap"><div class="avatar">${p.avatar?`<img src="${p.avatar}" alt="">`:'👤'}</div></div><h2>${esc(p.name)}</h2><p class="muted small">ID: ${esc(p.pid)}</p>${primeBadge(p)}</div>
- <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(p.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(p.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">🟡<strong>${fmt(p.gold)}</strong><small>ЗОЛОТО</small></div></div>
+ const next=ACH.find(a=>p.coins<a.at),t=tierOf(p),mine=p===me||p.uid===uid;
+ const sh=$('profileSheet');sh.className='profile-sheet '+(t?'prime t-'+t:'');
+ sh.innerHTML=`<div style="width:42px;height:5px;border-radius:9px;background:#65718b;margin:0 auto 14px"></div>
+ <div class="${t?'pbanner':''} center"><div class="avatar-wrap">${av(p,'avatar')}</div><h2 style="margin:6px 0 0">${nameHtml(p)}</h2>${t?`<div class="tname">${TIERS[t].icon} ${TIERS[t].name}</div><div class="muted small">до ${new Date(p.primeUntil).toLocaleDateString('ru-RU')}</div>`:''}${titleOf(p)?`<div><span class="ttl">${titleOf(p)}</span></div>`:''}<p class="muted small">ID: ${esc(p.pid)}</p></div>
+ <div class="stat-cards"><div class="stat-card">🪙<strong>${fmt(p.coins)}</strong><small>МОНЕТЫ</small></div><div class="stat-card">💎<strong>${fmt(p.gems)}</strong><small>АЛМАЗЫ</small></div><div class="stat-card">👆<strong>${fmt(p.clicks)}</strong><small>НАЖАТИЙ</small></div></div>
  <h3>🏆 Достижения и титулы</h3><div class="ach-grid">${ACH.map(a=>`<div class="ach-slot ${p.coins>=a.at?'':'locked'}"><span>${p.coins>=a.at?a.icon:'🔒'}</span><small>${a.name}</small></div>`).join('')}</div>
  <div class="hint">${next?`Следующий титул: <b>${next.title}</b> · ${fmt(p.coins)} / ${fmt(next.at)} монет`:'Все пять символов открыты!'}</div>
- <button class="btn secondary full" style="margin-top:16px" onclick="closeProfile()">Закрыть</button>`;
+ ${mine&&!t?`<button class="btn warm full" style="margin-top:14px" onclick="closeProfile();openPage('market')">👑 Получить PRIME</button>`:''}
+ <button class="btn secondary full" style="margin-top:12px" onclick="closeProfile()">Закрыть</button>`;
  $('profileModal').classList.remove('hidden');
 }
 function closeProfile(){$('profileModal').classList.add('hidden')}
@@ -437,22 +599,71 @@ async function changeNick(){
  }catch(e){alert('Такой ник уже занят или нет связи.')}
 }
 function authErr(e){
- if(e.code==='auth/unauthorized-domain')return 'Этот адрес сайта не добавлен в Firebase (Authentication → Settings → Authorized domains).';
- if(e.code==='auth/popup-blocked')return 'Браузер заблокировал окно входа. Разреши всплывающие окна для сайта.';
- return 'Ошибка: '+(e.code||e.message);
+ const c=e.code||'';
+ if(c==='auth/operation-not-allowed')return 'В Firebase не включён вход по Email/Password (Authentication → Способ входа).';
+ if(c==='auth/invalid-credential'||c==='auth/wrong-password'||c==='auth/user-not-found'||c==='auth/invalid-login-credentials')return 'Неверный ник/почта или пароль.';
+ if(c==='auth/too-many-requests')return 'Слишком много попыток. Подожди немного и попробуй снова.';
+ if(c==='auth/weak-password')return 'Пароль слишком простой: минимум 6 символов.';
+ if(c==='auth/email-already-in-use')return 'Этот аккаунт уже защищён или адрес занят.';
+ if(c==='auth/requires-recent-login')return 'Для этого действия войди в аккаунт заново.';
+ if(c==='auth/network-request-failed')return 'Нет связи с интернетом.';
+ return 'Ошибка: '+(c||e.message);
 }
-const quiet=e=>e.code==='auth/popup-closed-by-user'||e.code==='auth/cancelled-popup-request';
-async function linkGoogle(){
- try{await authM.linkWithPopup(auth.currentUser,new authM.GoogleAuthProvider());toast('Google привязан','Аккаунт можно восстановить на любом устройстве','🔐');render()}
- catch(e){if(e.code==='auth/credential-already-in-use')alert('Этот Google уже привязан к другому профилю. Нажми «Выйти из аккаунта», потом «Войти через Google».');else if(!quiet(e))alert(authErr(e))}
+const pwEmail=pid=>String(pid).toLowerCase()+'@nexora.app';
+const hasPw=u=>!!(u&&u.providerData&&u.providerData.some(p=>p.providerId==='password'));
+function closeAuth(){$('authModal').classList.add('hidden')}
+function openLogin(){
+ $('authBox').innerHTML=`<h3>🔑 Вход в аккаунт</h3><p class="hint">Введи ник и пароль, который ты задал в профиле.</p>
+ <label>Ник</label><input id="lgNick" maxlength="7" autocomplete="off" placeholder="Твой ник">
+ <label>Пароль</label><input id="lgPass" type="password" autocomplete="off" placeholder="Пароль">
+ <button class="btn full" style="margin-top:12px" id="lgBtn" onclick="doLogin()">Войти</button>
+ <button class="btn secondary full" style="margin-top:9px" onclick="closeAuth()">Отмена</button>`;
+ $('authModal').classList.remove('hidden');
 }
-async function googleLogin(){
- try{await authM.signInWithPopup(auth,new authM.GoogleAuthProvider())}
- catch(e){if(!quiet(e))alert(authErr(e))}
+async function doLogin(){
+ const n=$('lgNick').value.trim().toLowerCase(),pw=$('lgPass').value;
+ if(!n||!pw)return alert('Введи ник и пароль.');
+ $('lgBtn').disabled=true;
+ try{
+  const ns=await fsM.getDoc(fsM.doc(db,'nicks',n));if(!ns.exists())throw {code:'auth/invalid-credential'};
+  const ps=await fsM.getDoc(fsM.doc(db,'players',ns.data().uid));if(!ps.exists())throw {code:'auth/invalid-credential'};
+  await authM.signInWithEmailAndPassword(auth,pwEmail(ps.data().pid),pw);
+  closeAuth();
+ }catch(e){alert(authErr(e))}
+ const b=$('lgBtn');if(b)b.disabled=false;
+}
+function openProtect(){
+ $('authBox').innerHTML=`<h3>🔐 Защитить аккаунт</h3><p class="hint">Задай пароль. Тогда ты сможешь войти в этот аккаунт с любого устройства по нику и паролю. Запомни его: восстановить нельзя.</p>
+ <label>Пароль (от 6 символов)</label><input id="pwA" type="password" autocomplete="new-password" placeholder="Пароль">
+ <label>Повтори пароль</label><input id="pwB" type="password" autocomplete="new-password" placeholder="Ещё раз">
+ <button class="btn full" style="margin-top:12px" id="pwBtn" onclick="doProtect()">Сохранить пароль</button>
+ <button class="btn secondary full" style="margin-top:9px" onclick="closeAuth()">Отмена</button>`;
+ $('authModal').classList.remove('hidden');
+}
+async function doProtect(){
+ const a=$('pwA').value,b=$('pwB').value;
+ if(a.length<6)return alert('Пароль должен быть не короче 6 символов.');
+ if(a!==b)return alert('Пароли не совпадают.');
+ $('pwBtn').disabled=true;
+ try{
+  await authM.linkWithCredential(auth.currentUser,authM.EmailAuthProvider.credential(pwEmail(me.pid),a));
+  closeAuth();toast('Аккаунт защищён','Входи по нику и паролю с любого устройства','🔐');render();
+ }catch(e){alert(authErr(e))}
+ const x=$('pwBtn');if(x)x.disabled=false;
+}
+async function changePass(){
+ const u=auth.currentUser;if(!hasPw(u))return;
+ const old=prompt('Текущий пароль:');if(old===null)return;
+ const nw=prompt('Новый пароль (от 6 символов):');if(nw===null)return;
+ if(nw.length<6)return alert('Пароль должен быть не короче 6 символов.');
+ try{
+  await authM.reauthenticateWithCredential(u,authM.EmailAuthProvider.credential(pwEmail(me.pid),old));
+  await authM.updatePassword(u,nw);toast('Пароль изменён','','🔐');
+ }catch(e){alert(authErr(e))}
 }
 async function signOutAsk(){
  const u=auth.currentUser;
- if(u&&u.isAnonymous&&!confirm('Аккаунт не привязан к Google. После выхода ты потеряешь доступ к этому профилю. Выйти?'))return;
+ if(!hasPw(u)&&!confirm('Аккаунт не защищён паролем. После выхода ты потеряешь доступ к этому профилю. Выйти?'))return;
  await flush();await authM.signOut(auth);
 }
 async function deleteMe(){
@@ -546,24 +757,30 @@ async function applyCode(raw){
 }
 async function redeemPromo(){const i=$('promoInput');if(!i)return;if(await applyCode(i.value))i.value=''}
 
-/* ---------- админ (отдельный вход через Google) ---------- */
+/* ---------- админ (вход по почте и паролю) ---------- */
 let adm=null,admCache={},admT=null,pickTarget=null;
 function admInit(){if(adm)return;const a2=appM.initializeApp(cfg,'admin');adm={app:a2,auth:authM.getAuth(a2),db:fsM.getFirestore(a2)}}
 function adminLogin(){
  admInit();$('adminModal').classList.remove('hidden');
  if(adm.auth.currentUser){adminVerify();return}
- $('adminBox').innerHTML=`<h3>♜ Служебный вход</h3><div class="notice">Вход только для администратора через Google. Игровой аккаунт не затрагивается.</div><button class="btn full" onclick="adminSignIn()">🔐 Войти через Google</button><button class="btn secondary full" style="margin-top:9px" onclick="closeAdmin()">Отмена</button>`;
+ $('adminBox').innerHTML=`<h3>♜ Служебный вход</h3><div class="notice">Вход только для администратора. Игровой аккаунт не затрагивается.</div>
+ <label>Почта админа</label><input id="admEmail" type="email" autocomplete="off" placeholder="Почта админа">
+ <label>Пароль</label><input id="admPass" type="password" autocomplete="off" placeholder="Пароль">
+ <button class="btn full" style="margin-top:12px" id="admBtn" onclick="adminSignIn()">Войти</button>
+ <button class="btn secondary full" style="margin-top:9px" onclick="closeAdmin()">Отмена</button>`;
 }
 function closeAdmin(){$('adminModal').classList.add('hidden')}
 async function adminSignIn(){
- try{await authM.signInWithPopup(adm.auth,new authM.GoogleAuthProvider())}catch(e){if(!quiet(e))alert(authErr(e));return}
+ const em=$('admEmail').value.trim(),pw=$('admPass').value;if(!em||!pw)return alert('Введи почту и пароль.');
+ $('admBtn').disabled=true;
+ try{await authM.signInWithEmailAndPassword(adm.auth,em,pw)}catch(e){alert(authErr(e));const x=$('admBtn');if(x)x.disabled=false;return}
  adminVerify();
 }
 async function adminVerify(){
  $('adminBox').innerHTML='<div class="center muted">Проверяем доступ…</div>';
  try{await fsM.getDoc(fsM.doc(adm.db,'adminCheck','ping'));adminPanel()}
  catch(e){
-  if(e.code==='permission-denied'){const em=adm.auth.currentUser&&adm.auth.currentUser.email;await authM.signOut(adm.auth);$('adminBox').innerHTML=`<h3>⛔ Нет доступа</h3><div class="notice warn">Аккаунт ${esc(em||'')} не является администратором.</div><button class="btn full" onclick="closeAdmin()">Понятно</button>`}
+  if(e.code==='permission-denied'){const em=adm.auth.currentUser&&adm.auth.currentUser.email;await authM.signOut(adm.auth);$('adminBox').innerHTML=`<h3>⛔ Нет доступа</h3><div class="notice warn">Аккаунт ${esc(em||'')} не является администратором. Выйди и войди с почтой админа.</div><button class="btn full" onclick="closeAdmin()">Понятно</button>`}
   else $('adminBox').innerHTML=`<h3>⚠️ Ошибка</h3><div class="notice warn">${esc(e.code||e.message)}</div><button class="btn full" onclick="closeAdmin()">Закрыть</button>`;
  }
 }
@@ -578,18 +795,18 @@ function adminPanel(keep){
   <label>Заголовок</label><input id="mTitle" maxlength="45" placeholder="Например: Подарок от NEXORA">
   <label>Текст</label><input id="mText" maxlength="180" placeholder="Например: Спасибо за игру!">
   <label>Промокод (необязательно)</label><input id="mCode" maxlength="24" placeholder="Например: GIFT2026" autocomplete="off">
-  <div class="row"><div><label>Награда</label><select id="mType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option><option value="gold">🟡 Золото</option></select></div><div><label>Количество</label><input id="mAmount" type="number" min="1" max="1000000" value="500"></div></div>
+  <div class="row"><div><label>Награда</label><select id="mType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option></select></div><div><label>Количество</label><input id="mAmount" type="number" min="1" max="1000000" value="500"></div></div>
   <p class="hint">Промокод будет работать только у этого игрока и только один раз.</p>
   <button class="btn full" onclick="sendAdminMessage()">📤 Отправить игроку</button></div>
  <div class="admin-section"><h4>⚡ Выдать сразу</h4>
-  <div class="row"><div><select id="gType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option><option value="gold">🟡 Золото</option></select></div><div><input id="gAmount" type="number" min="1" max="1000000" value="100"></div></div>
+  <div class="row"><div><select id="gType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option></select></div><div><input id="gAmount" type="number" min="1" max="1000000" value="100"></div></div>
   <button class="btn full" style="margin-top:8px" onclick="admGrant()">Выдать награду</button>
   <label>PRIME</label><select id="primeDays"><option value="1">1 день</option><option value="7">7 дней</option><option value="30">30 дней</option><option value="365">1 год</option></select>
-  <div class="row" style="margin-top:8px"><button class="btn gold" onclick="admPrime()">👑 Выдать PRIME</button><button class="btn secondary" onclick="admUnprime()">Снять</button></div>
+  <div class="row" style="margin-top:8px"><button class="btn warm" onclick="admPrime()">👑 Выдать PRIME</button><button class="btn secondary" onclick="admUnprime()">Снять</button></div>
   <button class="btn danger full" style="margin-top:12px" onclick="admDelete()">🗑 Удалить игрока</button></div>
  <div class="admin-section"><h4>🌍 Общий промокод (для всех)</h4>
   <label>Код</label><input id="gcCode" maxlength="24" placeholder="Например: NEWYEAR" autocomplete="off">
-  <div class="row"><div><label>Награда</label><select id="gcType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option><option value="gold">🟡 Золото</option></select></div><div><label>Количество</label><input id="gcAmount" type="number" min="1" max="1000000" value="500"></div></div>
+  <div class="row"><div><label>Награда</label><select id="gcType"><option value="coins">🪙 Монеты</option><option value="gems">💎 Алмазы</option></select></div><div><label>Количество</label><input id="gcAmount" type="number" min="1" max="1000000" value="500"></div></div>
   <label>Сколько активаций всего</label><input id="gcMax" type="number" min="1" max="1000000" value="10">
   <button class="btn full" style="margin-top:8px" onclick="admGlobalCode()">Создать код</button>
   <div id="admCodes" style="margin-top:10px"></div></div>
@@ -610,7 +827,7 @@ async function admPreview(fresh){
  w.className='who';w.textContent='Ищем…';
  try{const p=await admResolve(fresh);
   if(!p){w.className='who bad';w.textContent='Игрок с таким ID не найден';return}
-  w.className='who ok';w.innerHTML=`✓ <b>${esc(p.name)}</b> ${isPrime(p)?'· 👑 PRIME':''}<br>🪙 ${fmt(p.coins)} · 💎 ${fmt(p.gems)} · 🟡 ${fmt(p.gold)}`;
+  w.className='who ok';const tt=tierOf(p);w.innerHTML=`✓ <b>${esc(p.name)}</b> ${tt?'· '+TIERS[tt].icon+' '+TIERS[tt].name:''}<br>🪙 ${fmt(p.coins)} · 💎 ${fmt(p.gems)}`;
  }catch(e){w.className='who bad';w.textContent='Ошибка: '+(e.code||e.message)}
 }
 async function admTargetOrAlert(){try{const p=await admResolve(true);if(!p)alert('Игрок не найден. Нажми «Выбрать из списка».');return p}catch(e){alert('Ошибка: '+(e.code||e.message));return null}}
@@ -632,9 +849,10 @@ async function sendAdminMessage(){
 async function admGrant(){const p=await admTargetOrAlert();if(!p)return;const n=admNum('gAmount');if(!n)return;const t=$('gType').value;
  try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{[t]:fsM.increment(n)});admPreview(true);toast('Награда выдана',`${p.name}: +${fmt(n)} ${LABELS[t]}`,'⚡')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
 async function admPrime(){const p=await admTargetOrAlert();if(!p)return;const d=Number($('primeDays').value);
- try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:Math.max(Date.now(),p.primeUntil||0)+d*864e5});admPreview(true);toast('PRIME активирован',p.name,'👑')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
+ const cur=tierOf(p),nt=TIER_BY_DAYS[d]||'day',tier=rankOf(cur)>=rankOf(nt)?cur:nt;
+ try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:Math.max(Date.now(),p.primeUntil||0)+d*864e5,primeTier:tier});admPreview(true);toast('PRIME активирован',p.name,'👑')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
 async function admUnprime(){const p=await admTargetOrAlert();if(!p)return;
- try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:0});admPreview(true);toast('PRIME снят',p.name,'👑')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
+ try{await fsM.updateDoc(fsM.doc(adm.db,'players',p.uid),{primeUntil:0,primeTier:''});admPreview(true);toast('PRIME снят',p.name,'👑')}catch(e){alert('Ошибка: '+(e.code||e.message))}}
 async function admDelete(){
  const p=await admTargetOrAlert();if(!p)return;if(!confirm('Удалить игрока «'+p.name+'» ('+p.pid+') со всем прогрессом?'))return;
  try{
@@ -674,7 +892,7 @@ function renderPicker(){
 function pickPlayer(pid){const i=$(pickTarget);if(i){i.value=pid;admPreview()}closePicker()}
 
 /* ---------- экспорт обработчиков для onclick ---------- */
-Object.assign(window,{skipSplash,startRegister,backFromRegister,register,googleLogin,openPage,openProfile,closeProfile,openInboxMessage,closeInboxMessage,removeCurrentMessage,copyAndRemoveMessage,useMessageCode,claimDaily,buyPower,clickCore,exchange,applyCreator,buy,redeemPromo,filterPlayers,loadPlayers,pickAvatar,changeNick,linkGoogle,signOutAsk,deleteMe,saveCrop,cancelCrop,resetCropPosition,adminLogin,closeAdmin,adminSignIn,adminLogout,admPreviewSoon,openPicker,closePicker,renderPicker,pickPlayer,sendAdminMessage,admGrant,admPrime,admUnprime,admDelete,admGlobalCode,admDelCode});
+Object.assign(window,{skipSplash,startRegister,backFromRegister,register,openLogin,doLogin,closeAuth,openProtect,doProtect,changePass,openPage,openProfile,closeProfile,openInboxMessage,closeInboxMessage,removeCurrentMessage,copyAndRemoveMessage,useMessageCode,claimDaily,buyPower,clickCore,exchange,setMTab,buyPrime,claimMiner,buyMiner,buyItem,equipItem,morePlayers,buy,redeemPromo,filterPlayers,loadPlayers,pickAvatar,changeNick,signOutAsk,deleteMe,saveCrop,cancelCrop,resetCropPosition,adminLogin,closeAdmin,adminSignIn,adminLogout,admPreviewSoon,openPicker,closePicker,renderPicker,pickPlayer,sendAdminMessage,admGrant,admPrime,admUnprime,admDelete,admGlobalCode,admDelCode});
 boot();
 </script>
 </body>
